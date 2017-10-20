@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 1 页 | MYBLOG</title>
+  <title>第 1 页 | Rychou&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
   <meta property="og:type" content="website">
-<meta property="og:title" content="MYBLOG">
+<meta property="og:title" content="Rychou&#39;blog">
 <meta property="og:url" content="http://xxxsimons.github.io/index.html">
-<meta property="og:site_name" content="MYBLOG">
+<meta property="og:site_name" content="Rychou&#39;blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MYBLOG">
+<meta name="twitter:title" content="Rychou&#39;blog">
   
-    <link rel="alternate" href="/atom.xml" title="MYBLOG" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Rychou&#39;blog" type="application/atom+xml">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -59,7 +59,7 @@
 
           <h1 class="site-title">
             
-              <a href="/" title="MYBLOG" rel="home"> MYBLOG </a>
+              <a href="/" title="Rychou&#39;blog" rel="home"> Rychou&#39;blog </a>
             
           </h1>
           
@@ -72,7 +72,7 @@
             <div class="clearfix sf-menu">
               <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">首页</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
                     
@@ -123,11 +123,25 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文章的密码验证"><a href="#文章的密码验证" class="headerlink" title="文章的密码验证"></a>文章的密码验证</h1><p>今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证<br>直接附上源码</p>
+        <script>
+while(1){
+if("123456"==prompt("请输入密码！(123456)"))
+{
+   break;
+}
+else
+{
+   alert("输入错误");
+}
+}
+
+</script>
+
+<h1 id="文章的密码验证"><a href="#文章的密码验证" class="headerlink" title="文章的密码验证"></a>文章的密码验证</h1><p>今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证<br>直接附上源码</p>
 <pre><code>&lt;script&gt;
 
 while(1){
-if(&quot;160423&quot;==prompt(&quot;Please input password&quot;))
+if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;))
 {
     break;
 }
@@ -138,7 +152,10 @@ else
 }
 
 &lt;/script&gt;
-</code></pre><p>不过这个代码还是不完善的，比如说如果你的主题主页不是单纯的列表页的话，那么你在主页就会出现这个密码验证。所以说不完善，博主还在想办法完善中。<br>不过我朋友找到一个插件可以设置密码，下面是我朋友的博客文章<br><a href="https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/" title="文章密码验证插件" target="_blank" rel="external">https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/</a></p>
+</code></pre><p><strong>注意事项：</strong> 使用时将该段代码放到文章开头，否则就会不起效果。什么意思呢？看下面图片就知道了。</p>
+<p><img src="/2017/10/19/给页面添加一个密码验证/p1.png" alt="演示1"></p>
+<p>看到了吧，如果放在文章末尾的话，就会先加载js代码前面的部分，也就是文章内容，所以说，为了防止这种情况发生，<strong>得把js代码放在文章开头</strong></p>
+<p>不过这个代码还是不完善的，比如说如果你的主题主页不是单纯的列表页的话，那么你在主页就会出现这个密码验证。所以说不完善，博主还在想办法完善中。<br>不过我朋友找到一个插件可以设置密码，下面是我朋友的博客文章<br><a href="https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/" title="文章密码验证插件" target="_blank" rel="external">https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/</a></p>
 
       
     </div>
@@ -440,7 +457,7 @@ $ hexo deploy
     </div>
     <!-- <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/archives" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
@@ -456,7 +473,7 @@ $ hexo deploy
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MYBLOG All Rights Reserved.
+	      &copy; 2017 Rychou&#39;blog All Rights Reserved.
         
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  
