@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>Rychou&#39;blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+  <body>
+    <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">Rychou&#39;blog</a>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/xxxsimons" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+    <main class="main">
+      <article class="post">
+  <div class="post-title">
+    <h2 class="title">Js中splice()于slice()的区别</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2017-11-06</span>
+  </div>
+  <div class="post-content">
+    <blockquote>
+<p>splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改,可以删除元素，也可以插入元素。而slice()是返回已有数组中的选定元素，可以截取字符串。</p>
+</blockquote>
+<h2 id="splice-语法"><a href="#splice-语法" class="headerlink" title="splice()语法"></a>splice()语法</h2><pre><code>array.splice(start)
+array.splice(start, deleteCount) 
+array.splice(start, deleteCount, item1, item2, ...)
+</code></pre><p><strong>示例</strong></p>
+<pre><code>var myFish = [&quot;angel&quot;, &quot;clown&quot;, &quot;mandarin&quot;, &quot;surgeon&quot;];
+
+//从第 2 位开始删除 0 个元素，插入 &quot;drum&quot;
+var removed = myFish.splice(2, 0, &quot;drum&quot;);
+//运算后的 myFish:[&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;mandarin&quot;, &quot;surgeon&quot;]
+//被删除元素数组：[]，没有元素被删除
+
+//从第 3 位开始删除 1 个元素
+removed = myFish.splice(3, 1);
+//运算后的myFish：[&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;surgeon&quot;]
+//被删除元素数组：[&quot;mandarin&quot;]
+
+//从第 2 位开始删除 1 个元素，然后插入 &quot;trumpet&quot;
+removed = myFish.splice(2, 1, &quot;trumpet&quot;);
+//运算后的myFish: [&quot;angel&quot;, &quot;clown&quot;, &quot;trumpet&quot;, &quot;surgeon&quot;]
+//被删除元素数组：[&quot;drum&quot;]
+
+//从第 0 位开始删除 2 个元素，然后插入 &quot;parrot&quot;, &quot;anemone&quot; 和 &quot;blue&quot;
+removed = myFish.splice(0, 2, &quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;);
+//运算后的myFish：[&quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;, &quot;trumpet&quot;, &quot;surgeon&quot;]
+//被删除元素的数组：[&quot;angel&quot;, &quot;clown&quot;]
+
+//从第 3 位开始删除 2 个元素
+removed = myFish.splice(3, Number.MAX_VALUE);
+//运算后的myFish: [&quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;]
+//被删除元素的数组：[&quot;trumpet&quot;, &quot;surgeon&quot;]
+</code></pre><h2 id="slice-语法"><a href="#slice-语法" class="headerlink" title="slice()语法"></a>slice()语法</h2><pre><code>array.slice(start, end)
+</code></pre><p><strong>示例</strong></p>
+<blockquote>
+<p><strong>在数组中读取元素：</strong></p>
+</blockquote>
+<pre><code>var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Lemon&quot;, &quot;Apple&quot;, &quot;Mango&quot;];
+var citrus = fruits.slice(1,3);
+</code></pre><blockquote>
+<p>输出：</p>
+</blockquote>
+<pre><code>Orange,Lemon
+</code></pre><blockquote>
+<p>截取字符串</p>
+</blockquote>
+<pre><code>var str=&quot;www.runoob.com!&quot;;
+document.write(str.slice(4)+&quot;&lt;br&gt;&quot;); // 从第 5 个字符开始截取到末尾
+document.write(str.slice(4,10)); // 从第 5 个字符开始截取到第10个字符
+</code></pre>
+  </div>
+</article>
+    </main>
+  </body>
+</html>
