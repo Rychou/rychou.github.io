@@ -1,44 +1,97 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <title>Rychou&#39;blog</title>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>给页面添加一个密码验证 | Rychou&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给页面添加一个密码验证">
+<meta property="og:url" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/index.html">
+<meta property="og:site_name" content="Rychou&#39;blog">
+<meta property="og:description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/p1.png">
+<meta property="og:updated_time" content="2017-10-20T12:23:22.953Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给页面添加一个密码验证">
+<meta name="twitter:description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
+<meta name="twitter:image" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/p1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rychou&#39;blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
   <link rel="stylesheet" href="/css/style.css">
 </head>
-  <body>
-    <header class="header">
-  <div class="blog-title">
-    <a href="/" class="logo">Rychou&#39;blog</a>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rychou&#39;blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Knowledge &amp; Life things!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xxxsimons.github.io"></form>
+      </div>
+    </div>
   </div>
-  <nav class="navbar">
-    <ul class="menu">
-      
-        <li class="menu-item">
-          <a href="/" class="menu-item-link">Home</a>
-        </li>
-      
-        <li class="menu-item">
-          <a href="/archives" class="menu-item-link">Archives</a>
-        </li>
-      
-        <li class="menu-item">
-          <a href="https://github.com/xxxsimons" class="menu-item-link">Github</a>
-        </li>
-      
-    </ul>
-  </nav>
 </header>
-    <main class="main">
-      <article class="post">
-  <div class="post-title">
-    <h2 class="title">给页面添加一个密码验证</h2>
+      <div class="outer">
+        <section id="main"><article id="post-给页面添加一个密码验证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/给页面添加一个密码验证/" class="article-date">
+  <time datetime="2017-10-18T16:05:29.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
   </div>
-   <div class="post-meta">
-    <span class="post-time">2017-10-19</span>
-  </div>
-  <div class="post-content">
-    <script>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给页面添加一个密码验证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script>
 while(1){
 if("123456"==prompt("请输入密码！(123456)"))
 {
@@ -72,17 +125,159 @@ else
 <p>看到了吧，如果放在文章末尾的话，就会先加载js代码前面的部分，也就是文章内容，所以说，为了防止这种情况发生，<strong>得把js代码放在文章开头</strong></p>
 <p>不过这个代码还是不完善的，比如说如果你的主题主页不是单纯的列表页的话，那么你在主页就会出现这个密码验证。所以说不完善，博主还在想办法完善中。<br>不过我朋友找到一个插件可以设置密码，下面是我朋友的博客文章<br><a href="https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/" title="文章密码验证插件" target="_blank" rel="external">https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/</a></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/" data-id="cj9r02aic0002vwuxzj3fne7s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/24/第六、七周计划表/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第六、七周计划表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/18/hexo建站的坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo建站的坑</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-    </main>
-	<!--���ٰ�-->
-<div id="SOHUCS" ></div>
-<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-window.changyan.api.config({
-appid: 'cytj08ckR',
-conf: 'prod_0b02950ac8e30d0232e49532efdd9930'
-});
-</script>
-  </body>
+
+
+<section id="comments">
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <div id="SOHUCS" sid="给页面添加一个密码验证"></div>
+    <script>
+        (function(){
+            var appid = 'cytj08ckR',
+                conf = '48f70f204a544d9520d3d73b6b456b7d';
+            var doc = document,
+                s = doc.createElement('script'),
+                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+            s.type = 'text/javascript';
+            s.charset = 'utf-8';
+            s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+            h.insertBefore(s,h.firstChild);
+            window.SCS_NO_IFRAME = true;
+        })()
+    </script>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plan/">plan</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/plan/" style="font-size: 10px;">plan</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/06/Js中splice-于slice-的区别/">Js中splice()于slice()的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/24/第六、七周计划表/">第六、七周计划表</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/18/hexo建站的坑/">hexo建站的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/18/计划/">计划</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Rychou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
 </html>
