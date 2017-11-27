@@ -5,22 +5,20 @@
   
 
   
-  <title>给页面添加一个密码验证 | Rychou&#39;blog</title>
+  <title>C++中的引用转化为C语言的指针 | Rychou&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
+<meta name="keywords" content="C++ C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="给页面添加一个密码验证">
-<meta property="og:url" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/index.html">
+<meta property="og:title" content="C++中的引用转化为C语言的指针">
+<meta property="og:url" content="http://xxxsimons.github.io/2017/11/27/2017-11-27/index.html">
 <meta property="og:site_name" content="Rychou&#39;blog">
-<meta property="og:description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
+<meta property="og:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/p1.png">
-<meta property="og:updated_time" content="2017-10-20T12:23:22.953Z">
+<meta property="og:updated_time" content="2017-11-27T15:31:18.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="给页面添加一个密码验证">
-<meta name="twitter:description" content="while(1){ if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;)) {    break; } else {    alert(&quot;输入错误&quot;); } }    文章的密码验证今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证直接附上源码 &amp;lt;scri">
-<meta name="twitter:image" content="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/p1.png">
+<meta name="twitter:title" content="C++中的引用转化为C语言的指针">
+<meta name="twitter:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
   
     <link rel="alternate" href="/atom.xml" title="Rychou&#39;blog" type="application/atom+xml">
   
@@ -69,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-给页面添加一个密码验证" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2017-11-27" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/19/给页面添加一个密码验证/" class="article-date">
-  <time datetime="2017-10-18T16:05:29.000Z" itemprop="datePublished">2017-10-19</time>
+    <a href="/2017/11/27/2017-11-27/" class="article-date">
+  <time datetime="2017-11-27T13:02:49.000Z" itemprop="datePublished">2017-11-27</time>
 </a>
     
   </div>
@@ -83,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      给页面添加一个密码验证
+      C++中的引用转化为C语言的指针
     </h1>
   
 
@@ -91,47 +89,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script>
-while(1){
-if("123456"==prompt("请输入密码！(123456)"))
-{
-   break;
+        <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。</p>
+<pre><code>typedef struct{
+    Triple data[MAXSIZE+1];
+    int rpos[MAXRC+1];
+    int mu,nu,tu;
+}RLSMatrix;
+Status InitSMatrix(RLSMatrix &amp;M,RLSMatrix &amp;N){
+    int p;
+    for(p=1;p&lt;=M-&gt;tu;p++){
+        printf(&quot;输入行号：&quot;);
+        scanf(&quot;%d&quot;,&amp;M.data[p].i);
+        printf(&quot;输入列号：&quot;);
+        scanf(&quot;%d&quot;,&amp;M.data[p].j);
+        printf(&quot;输入元素值：&quot;);
+        scanf(&quot;%d&quot;,&amp;M.data[p].e);
+    }
+    .....
 }
-else
-{
-   alert("输入错误");
+void main(){
+    RLSMatrix M N;
+    InitSMatrix(M,N);
 }
+</code></pre><p>上面这段是在C++里的代码，&amp;指的是引用。这代码在C中是跑不起来的，接下来我们做一些改动，让它在C语言跑起来</p>
+<pre><code>typedef struct{
+    Triple data[MAXSIZE+1];
+    int rpos[MAXRC+1];
+    int mu,nu,tu;
+}RLSMatrix;
+Status InitSMatrix(RLSMatrix *M,RLSMatrix *N){//&amp;换为*
+    int p;
+    for(p=1;p&lt;=M-&gt;tu;p++){
+        printf(&quot;输入行号：&quot;);
+        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].i);//.换成-&gt;
+        printf(&quot;输入列号：&quot;);
+        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].j);//.换成-&gt;
+        printf(&quot;输入元素值：&quot;);
+        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].e);//.换成-&gt;
+    }
+    .....
 }
-
-</script>
-
-<h1 id="文章的密码验证"><a href="#文章的密码验证" class="headerlink" title="文章的密码验证"></a>文章的密码验证</h1><p>今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证<br>直接附上源码</p>
-<pre><code>&lt;script&gt;
-
-while(1){
-if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;))
-{
-    break;
+void main(){
+    RLSMatrix M N;
+    InitSMatrix(&amp;M,&amp;N);//对M,N取址&amp;
 }
-else
-{
-    alert(&quot;输入错误&quot;);
-}
-}
-
-&lt;/script&gt;
-</code></pre><p><strong>注意事项：</strong> 使用时将该段代码放到文章开头，否则就会不起效果。什么意思呢？看下面图片就知道了。</p>
-<p><img src="/2017/10/19/给页面添加一个密码验证/p1.png" alt="演示1"></p>
-<p>看到了吧，如果放在文章末尾的话，就会先加载js代码前面的部分，也就是文章内容，所以说，为了防止这种情况发生，<strong>得把js代码放在文章开头</strong></p>
-<p>不过这个代码还是不完善的，比如说如果你的主题主页不是单纯的列表页的话，那么你在主页就会出现这个密码验证。所以说不完善，博主还在想办法完善中。<br>不过我朋友找到一个插件可以设置密码，下面是我朋友的博客文章<br><a href="https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/" title="文章密码验证插件" target="_blank" rel="external">https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/</a></p>
+</code></pre><p>这样我们的代码就可以在C中完美运行啦！！！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/" data-id="cjaicpxfz000508uxgf6pr5yz" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/11/27/2017-11-27/" data-id="cjaicpxfv000008uxhhg9z22a" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C++ C</a></li></ul>
 
     </footer>
   </div>
@@ -139,19 +149,10 @@ else
     
 <nav id="article-nav">
   
-    <a href="/2017/10/24/第六、七周计划表/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第六、七周计划表
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/18/hexo建站的坑/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/11/15/React-Study/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">hexo建站的坑</div>
+      <div class="article-nav-title">学习React的心理路程</div>
     </a>
   
 </nav>
@@ -162,7 +163,7 @@ else
 
 <section id="comments">
     <!--高速版，加载速度快，使用前需测试页面的兼容性-->
-    <div id="SOHUCS" sid="给页面添加一个密码验证"></div>
+    <div id="SOHUCS" sid="C++中的引用转化为C语言的指针"></div>
     <script>
         (function(){
             var appid = 'cytj08ckR',
