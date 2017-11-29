@@ -7,18 +7,18 @@
   
   <title>C++中的引用转化为C语言的指针 | Rychou&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
+  <meta name="description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。">
 <meta name="keywords" content="C++ C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中的引用转化为C语言的指针">
 <meta property="og:url" content="http://xxxsimons.github.io/2017/11/27/2017-11-27/index.html">
 <meta property="og:site_name" content="Rychou&#39;blog">
-<meta property="og:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
+<meta property="og:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-27T15:31:18.113Z">
+<meta property="og:updated_time" content="2017-11-29T15:07:23.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中的引用转化为C语言的指针">
-<meta name="twitter:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。 typedef struct{     Triple dat">
+<meta name="twitter:description" content="C++中引用符号&amp;amp;转化为C语言的指针*的方法最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。">
   
     <link rel="alternate" href="/atom.xml" title="Rychou&#39;blog" type="application/atom+xml">
   
@@ -89,7 +89,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。</p>
+        <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。<br><a id="more"></a></p>
 <pre><code>typedef struct{
     Triple data[MAXSIZE+1];
     int rpos[MAXRC+1];
@@ -138,7 +138,7 @@ void main(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/11/27/2017-11-27/" data-id="cjaicpxfv000008uxhhg9z22a" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/11/27/2017-11-27/" data-id="cjal7qtso00004wux35dg099g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C++ C</a></li></ul>
@@ -190,7 +190,7 @@ void main(){
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C++ C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plan/">plan</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C++ C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
   </div>
 
@@ -200,7 +200,7 @@ void main(){
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C-C/" style="font-size: 10px;">C++ C</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/plan/" style="font-size: 10px;">plan</a>
+      <a href="/tags/C-C/" style="font-size: 10px;">C++ C</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
     </div>
   </div>
 
@@ -234,11 +234,11 @@ void main(){
           </li>
         
           <li>
-            <a href="/2017/10/24/第六、七周计划表/">第六、七周计划表</a>
+            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
+            <a href="/2017/10/18/hexo建站的坑/">hexo建站的坑</a>
           </li>
         
       </ul>

@@ -86,56 +86,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。</p>
-<pre><code>typedef struct{
-    Triple data[MAXSIZE+1];
-    int rpos[MAXRC+1];
-    int mu,nu,tu;
-}RLSMatrix;
-Status InitSMatrix(RLSMatrix &amp;M,RLSMatrix &amp;N){
-    int p;
-    for(p=1;p&lt;=M-&gt;tu;p++){
-        printf(&quot;输入行号：&quot;);
-        scanf(&quot;%d&quot;,&amp;M.data[p].i);
-        printf(&quot;输入列号：&quot;);
-        scanf(&quot;%d&quot;,&amp;M.data[p].j);
-        printf(&quot;输入元素值：&quot;);
-        scanf(&quot;%d&quot;,&amp;M.data[p].e);
-    }
-    .....
-}
-void main(){
-    RLSMatrix M N;
-    InitSMatrix(M,N);
-}
-</code></pre><p>上面这段是在C++里的代码，&amp;指的是引用。这代码在C中是跑不起来的，接下来我们做一些改动，让它在C语言跑起来</p>
-<pre><code>typedef struct{
-    Triple data[MAXSIZE+1];
-    int rpos[MAXRC+1];
-    int mu,nu,tu;
-}RLSMatrix;
-Status InitSMatrix(RLSMatrix *M,RLSMatrix *N){//&amp;换为*
-    int p;
-    for(p=1;p&lt;=M-&gt;tu;p++){
-        printf(&quot;输入行号：&quot;);
-        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].i);//.换成-&gt;
-        printf(&quot;输入列号：&quot;);
-        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].j);//.换成-&gt;
-        printf(&quot;输入元素值：&quot;);
-        scanf(&quot;%d&quot;,&amp;M-&gt;data[p].e);//.换成-&gt;
-    }
-    .....
-}
-void main(){
-    RLSMatrix M N;
-    InitSMatrix(&amp;M,&amp;N);//对M,N取址&amp;
-}
-</code></pre><p>这样我们的代码就可以在C中完美运行啦！！！</p>
-
+        <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。<br></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/27/2017-11-27/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/11/27/2017-11-27/" data-id="cjaicpxfv000008uxhhg9z22a" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/11/27/2017-11-27/" data-id="cjal7qtso00004wux35dg099g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C++ C</a></li></ul>
@@ -180,7 +140,7 @@ void main(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/11/15/React-Study/" data-id="cjaicpxfz000208uxa0015rmv" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/11/15/React-Study/" data-id="cjal7qtsw00024wuxeuuqc25f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,108 +173,20 @@ void main(){
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改,可以删除元素，也可以插入元素。而slice()是返回已有数组中的选定元素，可以截取字符串。</p>
-</blockquote>
-<h2 id="splice-语法"><a href="#splice-语法" class="headerlink" title="splice()语法"></a>splice()语法</h2><pre><code>array.splice(start)
-array.splice(start, deleteCount) 
-array.splice(start, deleteCount, item1, item2, ...)
-</code></pre><p><strong>示例</strong></p>
-<pre><code>var myFish = [&quot;angel&quot;, &quot;clown&quot;, &quot;mandarin&quot;, &quot;surgeon&quot;];
-
-//从第 2 位开始删除 0 个元素，插入 &quot;drum&quot;
-var removed = myFish.splice(2, 0, &quot;drum&quot;);
-//运算后的 myFish:[&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;mandarin&quot;, &quot;surgeon&quot;]
-//被删除元素数组：[]，没有元素被删除
-
-//从第 3 位开始删除 1 个元素
-removed = myFish.splice(3, 1);
-//运算后的myFish：[&quot;angel&quot;, &quot;clown&quot;, &quot;drum&quot;, &quot;surgeon&quot;]
-//被删除元素数组：[&quot;mandarin&quot;]
-
-//从第 2 位开始删除 1 个元素，然后插入 &quot;trumpet&quot;
-removed = myFish.splice(2, 1, &quot;trumpet&quot;);
-//运算后的myFish: [&quot;angel&quot;, &quot;clown&quot;, &quot;trumpet&quot;, &quot;surgeon&quot;]
-//被删除元素数组：[&quot;drum&quot;]
-
-//从第 0 位开始删除 2 个元素，然后插入 &quot;parrot&quot;, &quot;anemone&quot; 和 &quot;blue&quot;
-removed = myFish.splice(0, 2, &quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;);
-//运算后的myFish：[&quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;, &quot;trumpet&quot;, &quot;surgeon&quot;]
-//被删除元素的数组：[&quot;angel&quot;, &quot;clown&quot;]
-
-//从第 3 位开始删除 2 个元素
-removed = myFish.splice(3, Number.MAX_VALUE);
-//运算后的myFish: [&quot;parrot&quot;, &quot;anemone&quot;, &quot;blue&quot;]
-//被删除元素的数组：[&quot;trumpet&quot;, &quot;surgeon&quot;]
-</code></pre><h2 id="slice-语法"><a href="#slice-语法" class="headerlink" title="slice()语法"></a>slice()语法</h2><pre><code>array.slice(start, end)
-</code></pre><p><strong>示例</strong></p>
-<blockquote>
-<p><strong>在数组中读取元素：</strong></p>
-</blockquote>
-<pre><code>var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Lemon&quot;, &quot;Apple&quot;, &quot;Mango&quot;];
-var citrus = fruits.slice(1,3);
-</code></pre><blockquote>
-<p>输出：</p>
-</blockquote>
-<pre><code>Orange,Lemon
-</code></pre><blockquote>
-<p>截取字符串</p>
-</blockquote>
-<pre><code>var str=&quot;www.runoob.com!&quot;;
-document.write(str.slice(4)+&quot;&lt;br&gt;&quot;); // 从第 5 个字符开始截取到末尾
-document.write(str.slice(4,10)); // 从第 5 个字符开始截取到第10个字符
-</code></pre>
+<p>splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改,可以删除元素，也可以插入元素。而slice()是返回已有数组中的选定元素，可以截取字符串。<br></p></blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/06/Javascript/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/11/06/Javascript/" data-id="cjaicpxgf000a08uxodr9hh7f" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/11/06/Javascript/" data-id="cjal7qtt400054wuxl80vgstp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第六、七周计划表" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/24/第六、七周计划表/" class="article-date">
-  <time datetime="2017-10-24T11:21:14.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/第六、七周计划表/">第六、七周计划表</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p>回顾上周的进度，上周进行了简单的hexo主题制作，初步了解了模板化的概念，目标基本达成。</p>
-<h1 id="这两周计划"><a href="#这两周计划" class="headerlink" title="这两周计划"></a>这两周计划</h1><p>由于本周个人原因不在学校，因此无法进行学习任务，所以打算把这周计划与下周计划合并，一起做。</p>
-<p>打算在这两周重启开学前学习React的计划，计划如下：</p>
-<ol>
-<li>观看React视频教程，阅读相关文档，制作一个事务计划表组件，可以向其中添加将要执行的事务，也可以删除。</li>
-<li>多向刘炯知学长交流，向他请教学习方法以及学习流程。</li>
-<li>阅读webpack，Babel文档，了解其在项目开发中的具体作用</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/10/24/第六、七周计划表/" data-id="cjaicpxgf000b08ux2ecz5ot4" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -344,44 +216,16 @@ document.write(str.slice(4,10)); // 从第 5 个字符开始截取到第10个字
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script>
-while(1){
-if("123456"==prompt("请输入密码！(123456)"))
-{
-   break;
-}
-else
-{
-   alert("输入错误");
-}
-}
-
-</script>
-
-<h1 id="文章的密码验证"><a href="#文章的密码验证" class="headerlink" title="文章的密码验证"></a>文章的密码验证</h1><p>今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证<br>直接附上源码</p>
-<pre><code>&lt;script&gt;
-
-while(1){
-if(&quot;123456&quot;==prompt(&quot;请输入密码！(123456)&quot;))
-{
-    break;
-}
-else
-{
-    alert(&quot;输入错误&quot;);
-}
-}
-
-&lt;/script&gt;
-</code></pre><p><strong>注意事项：</strong> 使用时将该段代码放到文章开头，否则就会不起效果。什么意思呢？看下面图片就知道了。</p>
-<p><img src="/2017/10/19/给页面添加一个密码验证/p1.png" alt="演示1"></p>
-<p>看到了吧，如果放在文章末尾的话，就会先加载js代码前面的部分，也就是文章内容，所以说，为了防止这种情况发生，<strong>得把js代码放在文章开头</strong></p>
-<p>不过这个代码还是不完善的，比如说如果你的主题主页不是单纯的列表页的话，那么你在主页就会出现这个密码验证。所以说不完善，博主还在想办法完善中。<br>不过我朋友找到一个插件可以设置密码，下面是我朋友的博客文章<br><a href="https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/" title="文章密码验证插件" target="_blank" rel="external">https://bababadboy.github.io/2017/10/18/AES%E5%8A%A0%E5%AF%86hexo%E6%96%87%E7%AB%A0/</a></p>
-
+        <h1 id="文章的密码验证"><a href="#文章的密码验证" class="headerlink" title="文章的密码验证"></a>文章的密码验证</h1><p>今天写博客的时候想着要些一些日记之类的博客的话，如果没有密码验证那就不叫日记了，所以在网上找了一下方法，下面是我根据别人的改进的js代码,加在文章中可以实现密码验证<br></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/19/给页面添加一个密码验证/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/" data-id="cjaicpxfz000508uxgf6pr5yz" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/10/19/给页面添加一个密码验证/" data-id="cjal7qtt800074wuxhkzqkw59" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -415,66 +259,19 @@ else
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Hexo的安装与使用"><a href="#Hexo的安装与使用" class="headerlink" title="Hexo的安装与使用"></a>Hexo的安装与使用</h1><p>这是我的第一篇博客，刚开始想弄jekyll的，但是弄了很久也没配置好，干脆直接弄hexo了。<br>接下来讲讲我弄hexo的遇到的一些问题吧。<br><a href="http://www.jianshu.com/p/e99ed60390a8" title="20分钟教你使用hexo搭建github博客" target="_blank" rel="external">这是一个我看到的一个比较好的教程</a></p>
-<p>大家在配置好后，在本地运行一般没有问题，但是在推到Github上去的时候，</p>
-<pre><code>$ hexo deploy
-Error：Deployer not found: git
-</code></pre><p>我就遇到了这里出错的问题，在网上看了解决办法发现只需要在你的Blog的根目录下运行一下代码</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre><p>然后再</p>
-<pre><code>$ hexo generate
-$ hexo deploy
-</code></pre><p>然后everything is ok！</p>
-
+        <h1 id="Hexo的安装与使用"><a href="#Hexo的安装与使用" class="headerlink" title="Hexo的安装与使用"></a>Hexo的安装与使用</h1><p>这是我的第一篇博客，刚开始想弄jekyll的，但是弄了很久也没配置好，干脆直接弄hexo了。<br>接下来讲讲我弄hexo的遇到的一些问题吧。<br><a href="http://www.jianshu.com/p/e99ed60390a8" title="20分钟教你使用hexo搭建github博客" target="_blank" rel="external">这是一个我看到的一个比较好的教程</a><br></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/18/hexo建站的坑/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/10/18/hexo建站的坑/" data-id="cjaicpxgf000608uxtiz1xlbg" class="article-share-link">Share</a>
+      <a data-url="http://xxxsimons.github.io/2017/10/18/hexo建站的坑/" data-id="cjal7qtt400064wuxbcjg1sjj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-计划" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/18/计划/" class="article-date">
-  <time datetime="2017-10-18T15:12:24.000Z" itemprop="datePublished">2017-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/18/计划/">计划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="周计划表"><a href="#周计划表" class="headerlink" title="周计划表"></a>周计划表</h1><h2 id="第7周"><a href="#第7周" class="headerlink" title="第7周"></a>第7周</h2><ol>
-<li>学习hexo模板相关知识，尝试着自己做出一套模板。</li>
-<li>看React视频教程</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xxxsimons.github.io/2017/10/18/计划/" data-id="cjaicpxgf000708uxa4cm1iqp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plan/">plan</a></li></ul>
 
     </footer>
   </div>
@@ -496,7 +293,7 @@ $ hexo deploy
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C++ C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plan/">plan</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C++ C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
   </div>
 
@@ -506,7 +303,7 @@ $ hexo deploy
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C-C/" style="font-size: 10px;">C++ C</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/plan/" style="font-size: 10px;">plan</a>
+      <a href="/tags/C-C/" style="font-size: 10px;">C++ C</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
     </div>
   </div>
 
@@ -540,11 +337,11 @@ $ hexo deploy
           </li>
         
           <li>
-            <a href="/2017/10/24/第六、七周计划表/">第六、七周计划表</a>
+            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
+            <a href="/2017/10/18/hexo建站的坑/">hexo建站的坑</a>
           </li>
         
       </ul>
