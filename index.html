@@ -90,58 +90,16 @@
 <p>比如用的是github，那么在github上面创一个库，库的名字用你想发布的npm包名就好了。</p>
 <p><strong>2. clone到本地</strong></p>
 <p><strong>3. 在本地库运行npm init</strong></p>
-<p>按照提示依次输入信息，如果有不想输入的话直接回车就好了。<br>最终生成的package.json文件内容如下：</p>
-<pre><code>{
-  &quot;name&quot;: &quot;rycou-test&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;a test&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;repository&quot;: {
-    &quot;type&quot;: &quot;git&quot;,
-    &quot;url&quot;: &quot;https://git.coding.net/rychouuuu/test-npm-install.git&quot;
-  },
-  &quot;keywords&quot;: [
-    &quot;test&quot;
-  ],
-  &quot;author&quot;: &quot;rychou&quot;,
-  &quot;license&quot;: &quot;ISC&quot;
-}
-</code></pre><p>这里还需要一个入口文件，我这里用的是默认的index.js。在本地库里面新建文件index.js,内容如下：</p>
-<pre><code>exports.showMsg = function () {
-  console.log(&quot;This is my first module&quot;);
-};
-</code></pre><p>然后把本地库git push到远程库。</p>
-<p><strong>4. 发布npm包</strong></p>
-<p>4.1 首先要在官网注册一个账号,<a href="https://www.npmjs.com/signup" target="_blank" rel="external">npm注册</a><br>4.2 如果是第一次登陆的话，要在本地运行npm login，登陆一下。</p>
-<pre><code>$npm login
-Username: (你注册的时候的Username)
-Email: (你的注册邮箱)
-</code></pre><p>4.3 运行npm publish发布包，发布之后去官网(<a href="https://www.npmjs.com" target="_blank" rel="external">npm</a>)搜一下你的包是否发布成功。</p>
-<p>发布过程中你可能会遇到错误：</p>
-<p>error 1： 使用cnpm的报错<br>处理方法： 换回npm的镜像</p>
-<pre><code>npm config set registry http://registry.npmjs.org
-//发布之后改回淘宝镜像就好了
-npm config set registry https://registry.npm.taobao.org
-</code></pre><p>error 2: 邮箱未认证<br>处理方法： 去官网登陆后，会弹出一个是否发送邮箱的认证，点击发邮箱去自己的邮箱点击链接认证，然后再发布就好了</p>
-<p>其他错误： 遇到其他错误的话，google查一下。</p>
-<p><strong>5. 用自己刚刚发布的包</strong></p>
-<p>5.1 在本地新建一个空目录，然后 </p>
-<pre><code>npm install (你发布的包名)
-</code></pre><p>5.2 新建index.js，内容：</p>
-<pre><code>var test = require(&#39;你的包名&#39;);
-test.showMsg();
-</code></pre><p>5.3<br>    node index.js</p>
-<p>5.4 运行结果：</p>
-<pre><code>This is my first module
-</code></pre><p><strong>恭喜你成功了</strong></p>
-
+<p>按照提示依次输入信息，如果有不想输入的话直接回车就好了。<br>最终生成的package.json文件内容如下：<br></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/12/06/2017-12-6/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/12/06/2017-12-6/" data-id="cjav4k4et00011guxfnwjypcn" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/12/06/2017-12-6/" data-id="cjav7ymdq00023kuxfbumvzln" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
@@ -184,7 +142,7 @@ test.showMsg();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/11/27/2017-11-27/" data-id="cjav4k4et00001guxm5ijz66d" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/11/27/2017-11-27/" data-id="cjav7ymdi00003kux17br7xpu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C++ C</a></li></ul>
@@ -229,7 +187,7 @@ test.showMsg();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/11/15/React-Study/" data-id="cjav4k4et00031guxtxkdk3bd" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/11/15/React-Study/" data-id="cjav7ymdz00063kux13y8hqmg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,7 +229,7 @@ test.showMsg();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/11/06/Javascript/" data-id="cjav4k4et00041guxxv36see6" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/11/06/Javascript/" data-id="cjav7ymdx00053kuxauk96ha5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -314,7 +272,7 @@ test.showMsg();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/10/19/给页面添加一个密码验证/" data-id="cjav4k4f900081guxk4zi8btl" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/10/19/给页面添加一个密码验证/" data-id="cjav7yme4000a3kuxe9dr66ac" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -357,7 +315,7 @@ test.showMsg();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.rychou.xyz/2017/10/18/hexo建站的坑/" data-id="cjav4k4et00051guxt5txjhqz" class="article-share-link">Share</a>
+      <a data-url="http://www.rychou.xyz/2017/10/18/hexo建站的坑/" data-id="cjav7yme000073kuxrswqrpkj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
