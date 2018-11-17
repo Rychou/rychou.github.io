@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A third year front end student from Hangzhou Dianzi University">
+  <meta name="keyword" content="Knowledge,Things">
+  
+  <link rel="shortcut icon" type="image/ico" href="source/css/images/favicon.ico">
+  
+  <title>
+    
+    Linux操作系统下连接闪讯的方法（支持有线与无线） |
+    Rychou&#39;blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Rychou'blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>
+    Linux操作系统下连接闪讯的方法（支持有线与无线）
+  </h2>
+  <p class="post-date">
+    2018-10-05
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>用过电信闪讯的同学都知道，闪讯没有开发 Linux 的客户端程序，所以这让很多玩 Linux 操作系统同时又是闪讯用户的同学很头疼，今天我就来介绍一下如何在 Linux 下连接闪讯网络，并且支持有线连接和无线连接。</p>
+<a id="more"></a>
+<p>本教材基于这个<code>Github</code>仓库<a href="https://github.com/Elrori/shanxun_pppoe_linux_desktop" target="_blank" rel="noopener">shanxun_pppoe_linux_desktop</a></p>
+<h1 id="二、使用教程"><a href="#二、使用教程" class="headerlink" title="二、使用教程"></a>二、使用教程</h1><h3 id="1-克隆此仓库到本地"><a href="#1-克隆此仓库到本地" class="headerlink" title="1. 克隆此仓库到本地"></a>1. 克隆此仓库到本地</h3><p><a href="https://github.com/Elrori/shanxun_pppoe_linux_desktop" target="_blank" rel="noopener">shanxun_pppoe_linux_desktop</a></p>
+<h3 id="2-安装-ppp-依赖"><a href="#2-安装-ppp-依赖" class="headerlink" title="2. 安装 ppp 依赖"></a>2. 安装 ppp 依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ppp</span><br></pre></td></tr></table></figure>
+<h3 id="3-修改或确认-makefile-文件的-TODO-项"><a href="#3-修改或确认-makefile-文件的-TODO-项" class="headerlink" title="3. 修改或确认 makefile 文件的 TODO 项"></a>3. 修改或确认 makefile 文件的 TODO 项</h3><p>makefile 中的 TODO 项都有相关的注释，不同的系统可能有不同的配置，应先确认。</p>
+<h3 id="4-安装和编译"><a href="#4-安装和编译" class="headerlink" title="4. 安装和编译"></a>4. 安装和编译</h3><p>在仓库目录下执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod a+x INSTALL</span><br><span class="line">sudo ./INSTALL zhejiang_xiaoyuan_sxplugin</span><br><span class="line"><span class="meta">#</span>(其他地区请更换,地区列表在makefile内)</span><br></pre></td></tr></table></figure>
+<h3 id="5-连接闪讯网络"><a href="#5-连接闪讯网络" class="headerlink" title="5. 连接闪讯网络"></a>5. 连接闪讯网络</h3><p>由于闪讯网络有两种方式连接，有线和无线，方法略有不同。</p>
+<p>首先在命令行执行<code>ifconfig</code>命令，记录下有线网卡和无线网卡名称，有线网卡名称是<code>e</code>开头的，无线网卡名称是<code>w</code>开头的，不同设备的名称不一样。</p>
+<p><strong>5.1 有线连接</strong></p>
+<p>直接使用以下命令连接有线：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo connect_sx &lt;username&gt; &lt;password&gt;</span><br></pre></td></tr></table></figure>
+<p>参数分别是闪讯用户名和密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 其后直接使用这个命令就可以了</span><br><span class="line">sudo connect_sx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 更改密码</span><br><span class="line">sudo connect_sx &lt;password&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 断开连接</span><br><span class="line">sudo connect_sx stop</span><br></pre></td></tr></table></figure>
+<p>若连接不上，则尝试以下命令后再次尝试连接。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo del default route</span><br><span class="line">sudo add default route &lt;有线网卡名称&gt;</span><br><span class="line">sudo connect_sx &lt;username&gt; &lt;password&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>5.2 无线连接</strong></p>
+<p>使用以下命令连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pppd noauth nodetach defaultroute usepeerdns maxfail 1 user &lt;your username&gt; password &lt;your password&gt; mtu 1492 mru 1492 plugin rp-pppoe.so nic-&lt;网卡名&gt; plugin zhejiang_xiaoyuan_sxplugin.so</span><br></pre></td></tr></table></figure>
+<p>需要配置的参数有用户名和密码，以及你的无线网卡名，此方法也可以用来连接有线，在网卡名填入对应的有线网卡名即可。</p>
+<h1 id="三、连接脚本"><a href="#三、连接脚本" class="headerlink" title="三、连接脚本"></a>三、连接脚本</h1><p>针对以上连接方式，为了便于连接，我写了以下脚本，仅供参考。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> 是否连接有线</span><br><span class="line">ETH_STATE=`cat /sys/class/net/enp4s0/operstate`</span><br><span class="line"><span class="meta">#</span> 是否连接无线</span><br><span class="line">WLAN_STATE=`cat /sys/class/net/wlp1s0/operstate`</span><br><span class="line"><span class="meta">#</span> 连接的无线网络名称 其中wlp1s0是无线网卡名</span><br><span class="line">WLAN_NAME=`iwconfig wlp1s0 | grep ESSID | awk -F\" '&#123;print $2&#125;'`</span><br><span class="line"><span class="meta">#</span> 账号密码</span><br><span class="line">username=12345678911@DZKD.XY</span><br><span class="line">password=123456</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 有线连接</span><br><span class="line">if [ "up" == $ETH_STATE ]</span><br><span class="line">then</span><br><span class="line">	connect_sx</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 无线连接</span><br><span class="line">if [ "up" == $WLAN_STATE ]</span><br><span class="line">then</span><br><span class="line"><span class="meta">	#</span> 我所在环境能连闪讯的有三个无线WIFI</span><br><span class="line">	if [ "ChinaNet-shanxun" == $WLAN_NAME ]||[ "ChinaNet-tRmt" == $WLAN_NAME ]||[ "ChinaNet-tRmt-5G" == $WLAN_NAME ]</span><br><span class="line">	then</span><br><span class="line">		pppd noauth nodetach defaultroute usepeerdns maxfail 1 user $username password $password mtu 1492 mru 1492 plugin rp-pppoe.so nic-wlp1s0 plugin zhejiang_xiaoyuan_sxplugin.so</span><br><span class="line">	else</span><br><span class="line">		echo "is not shanxun"</span><br><span class="line">	fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>在后台运行脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nohup ./shanxun.sh &amp;</span><br></pre></td></tr></table></figure>
+
+    </section>
+    <!-- Tags START -->
+    
+    <div class="tags">
+      <span>Tags:</span>
+      
+  <a href="/tags#Linux">
+    <span class="tag-code">Linux</span>
+  </a>
+
+  <a href="/tags#闪讯">
+    <span class="tag-code">闪讯</span>
+  </a>
+
+    </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/09/27/ES6数组去重和重复元素统计/">
+        <span class="nav-arrow">← </span>
+        
+          ES6数组去重和重复元素统计
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/10/06/用Promise实现小程序接口链式调用/">
+        
+          用Promise实现小程序接口链式调用
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+    <!-- gitalk START -->
+    <div id="gitalk-container"></div>
+    <!-- gitalk END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、前言"><span class="toc-nav-text">一、前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、使用教程"><span class="toc-nav-text">二、使用教程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-克隆此仓库到本地"><span class="toc-nav-text">1. 克隆此仓库到本地</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-安装-ppp-依赖"><span class="toc-nav-text">2. 安装 ppp 依赖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-修改或确认-makefile-文件的-TODO-项"><span class="toc-nav-text">3. 修改或确认 makefile 文件的 TODO 项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-安装和编译"><span class="toc-nav-text">4. 安装和编译</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-连接闪讯网络"><span class="toc-nav-text">5. 连接闪讯网络</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、连接脚本"><span class="toc-nav-text">三、连接脚本</span></a></li>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'rychou.github.io/2018/10/05/Linux操作系统下连接闪讯的方法/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6fc309d5ef8fb81722a1',
+    clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
+    id: document.title,
+    labels: ["Gitalk"],
+    repo: 'rychou.github.io',
+    owner: 'Rychou',
+    admin: 'Rychou'
+  })
+  gitalk.render('gitalk-container')
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy;
+    2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+  </p>
+</footer>
+
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

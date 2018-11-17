@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A third year front end student from Hangzhou Dianzi University">
+  <meta name="keyword" content="Knowledge,Things">
+  
+  <link rel="shortcut icon" type="image/ico" href="source/css/images/favicon.ico">
+  
+  <title>
+    
+    Js学习笔记：闭包 |
+    Rychou&#39;blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Rychou'blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>
+    Js学习笔记：闭包
+  </h2>
+  <p class="post-date">
+    2018-09-02
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>这个周末，注意力都在学习基础 Js 知识上面，刚好看到了闭包这个神圣的东西，所以打算把这两天学到的总结下来，算是巩固自己所学。也可能有些不正确的地方，也请大家看到了，麻烦在评论下提醒一下，算是互相学习了。</p>
+<a id="more"></a>
+<h1 id="二、什么是闭包？"><a href="#二、什么是闭包？" class="headerlink" title="二、什么是闭包？"></a>二、什么是闭包？</h1><blockquote>
+<p>百度百科定义：闭包就是能够读取其他函数内部变量的函数。</p>
+</blockquote>
+<p>在解释之前，得先讲讲作用域。先来看下面这个示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>示例中包含了两种作用域，一种是属于全局的全局作用域，另一种是属于函数<code>f</code>的局部作用域。由于<code>Javascript</code>这种<strong>链式作用域</strong>(父作用域是可以被其子作用域访问的，而子作用域却不能被父作用域访问)的机制，使得示例最后一行输出了<code>undefined</code></p>
+<p>从此可以看出，无法从父作用域中访问子作用域。而我们再来看闭包的定义：闭包就是能够读取其他函数内部变量的函数。也就是闭包可以让我们从父作用域中访问到子作用域，具体怎么实现的呢？来看这个经典的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line"></span><br><span class="line">baz(); <span class="comment">// 2 -&gt; 这就是闭包的效果</span></span><br></pre></td></tr></table></figure>
+<p>这个示例中，闭包就是函数<code>bar</code>。可以看到，我们通过在函数<code>foo</code>内部定义其子函数<code>bar</code>，并将其作为<code>foo</code>返回值，因为<code>bar</code>函数作用域可以访问<code>foo</code>的作用域，所以实现了从全局作用域访问<code>foo</code>函数作用域的效果。</p>
+<h1 id="三、闭包的应用"><a href="#三、闭包的应用" class="headerlink" title="三、闭包的应用"></a>三、闭包的应用</h1><p>其实，平时你所写的代码中，早就用到了闭包，只是你还没发现而已。</p>
+<p>本质上，无论何时何地，如果将函数当作值传递到其他地方使用（非函数所在作用域），你就已经使用了闭包。例如上面示例说的函数<code>bar</code>，我们将他传递到了全局作用域下，通过这种方式访问到本该不能访问的变量<code>a</code>。</p>
+<p>在定时器、事件监听器、Ajax 请求、任何其他异步（或同步）任务中，只要使用了回调函数，实际上就是在使用闭包！</p>
+<h1 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h1><p>闭包会让他所在作用域中的变量始终保存在内存中，而不会被垃圾回收机制回收。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">p</span>)</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(++p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = foo(<span class="number">1</span>);</span><br><span class="line">baz(); <span class="comment">// 2</span></span><br><span class="line">baz(); <span class="comment">// 3</span></span><br><span class="line">baz(); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bazz = foo(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">bazz(); <span class="comment">// 3</span></span><br><span class="line">bazz(); <span class="comment">// 4</span></span><br><span class="line">bazz(); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">baz(); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<p>看到了没，闭包的使用，函数调用之后，让其外层函数的内部变量(<code>foo</code>函数内的变量)始终保存在了内存中，而不会被回收。</p>
+<p>值得注意的是，每次调用一次<code>foo</code>，都会生成一个新的闭包，都会在内存中保存下其外层函数的内部变量。因此要注意闭包的使用，否则会导致性能问题。</p>
+<h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><p>闭包的作用：</p>
+<ul>
+<li>能够读取其他函数内部变量。</li>
+<li>让其他函数的内部变量始终保存在内存中。</li>
+</ul>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="https://wangdoc.com/javascript/types/function.html#闭包" target="_blank" rel="noopener">阮一峰的 Javascript 入门教程——闭包</a></li>
+<li>书籍：P43，<a href="https://book.douban.com/subject/26351021/" target="_blank" rel="noopener">你不知道的 Javascript 之闭包——上卷</a>。</li>
+</ul>
+<p>附：<a href="https://pan.baidu.com/s/16SXRXo4jXDO_RZHphWv0oA" target="_blank" rel="noopener">你不知道的 Javascript 系列电子书网盘链接</a>， 密码：i8jf</p>
+</blockquote>
+
+    </section>
+    <!-- Tags START -->
+    
+    <div class="tags">
+      <span>Tags:</span>
+      
+  <a href="/tags#Javascript">
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#闭包">
+    <span class="tag-code">闭包</span>
+  </a>
+
+    </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">
+        <span class="nav-arrow">← </span>
+        
+          Mpvue中使用Vant Weapp组件库
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/09/18/Js学习笔记之回调函数/">
+        
+          Js学习笔记：回调函数
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+    <!-- gitalk START -->
+    <div id="gitalk-container"></div>
+    <!-- gitalk END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、前言"><span class="toc-nav-text">一、前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、什么是闭包？"><span class="toc-nav-text">二、什么是闭包？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、闭包的应用"><span class="toc-nav-text">三、闭包的应用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#四、注意事项"><span class="toc-nav-text">四、注意事项</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#五、总结"><span class="toc-nav-text">五、总结</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'rychou.github.io/2018/09/02/Js学习笔记之闭包/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6fc309d5ef8fb81722a1',
+    clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
+    id: document.title,
+    labels: ["Gitalk"],
+    repo: 'rychou.github.io',
+    owner: 'Rychou',
+    admin: 'Rychou'
+  })
+  gitalk.render('gitalk-container')
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy;
+    2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+  </p>
+</footer>
+
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

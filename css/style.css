@@ -87,10 +87,14 @@ pre {
   white-space: nowrap;
 }
 .article-card {
-  padding-bottom: 20px;
+  padding: 12px;
+  border-radius: 5px;
 }
 .article-card:first-child {
   margin-top: 60px;
+}
+.article-card:hover .article-head a {
+  border-bottom: 2px solid #42b983;
 }
 h2.article-head {
   font-size: 1.6em;
@@ -227,7 +231,7 @@ h2.article-head {
   float: left;
 }
 .money-like .money-code .alipay-code .code-image {
-  background-image: url("images/alipay.jpg");
+  background-image: url("https://i.loli.net/2018/11/17/5bf003512211f.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   width: 4.5em;
@@ -237,7 +241,7 @@ h2.article-head {
   float: right;
 }
 .money-like .money-code .wechat-code .code-image {
-  background-image: url("images/wechat.jpg");
+  background-image: url("https://i.loli.net/2018/11/17/5bf00350388e2.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   width: 4.5em;
@@ -986,6 +990,12 @@ h2.article-head {
 .catalog-container .toc-main li {
   list-style-type: none;
   line-height: 1.5;
+}
+.toc-nav-item > a {
+  color: #000;
+}
+.toc-nav-item > a:hover {
+  color: #42b983;
 }
 .nav-container {
   width: 100%;
