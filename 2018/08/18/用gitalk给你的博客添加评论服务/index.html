@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A third year front end student from Hangzhou Dianzi University">
+  <meta name="keyword" content="Knowledge,Things">
+  
+  <link rel="shortcut icon" type="image/ico" href="source/css/images/favicon.ico">
+  
+  <title>
+    
+    用gitalk给你的博客添加评论服务 |
+    Rychou&#39;blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Rychou'blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>
+    用gitalk给你的博客添加评论服务
+  </h2>
+  <p class="post-date">
+    2018-08-18
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>不像 hexo、jekyll 等，为了学习，我的博客是用<code>vue</code>和<code>nodejs</code>搭建出来的。支持在线编辑和 markdown 渲染等功能。</p>
+<p>大家如果感兴趣可以看我的<a href="www.rychou.xyz">博客地址</a></p>
+<p>最近给自己的博客添加了评论服务，用到的评论服务是<a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">Gitalk</a>，它是基于<code>github issue</code>搭建出来的评论系统。废话不多说，接下来说说如何使用。</p>
+<a id="more"></a>
+<h1 id="二、必要的准备"><a href="#二、必要的准备" class="headerlink" title="二、必要的准备"></a>二、必要的准备</h1><h3 id="在-Github-创建一个用来存放评论的仓库"><a href="#在-Github-创建一个用来存放评论的仓库" class="headerlink" title="在 Github 创建一个用来存放评论的仓库"></a>在 Github 创建一个用来存放评论的仓库</h3><p>当然你也可以直接用你博客所在的仓库，因为我的博客部署到了<code>coding pages</code>，所以我单独创建了一个仓库用来存放评论。</p>
+<h3 id="注册一个Github-OAuth-application"><a href="#注册一个Github-OAuth-application" class="headerlink" title="注册一个Github OAuth application"></a>注册一个<code>Github OAuth application</code></h3><p><a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">没有的可以点这里申请</a></p>
+<p><img src="https://i.loli.net/2018/08/18/5b77da4eed290.jpg" alt="申请OAuth application"></p>
+<p>注册成功后，记录下你的<code>clientID</code>和<code>clientSecret</code>。</p>
+<h1 id="三、安装"><a href="#三、安装" class="headerlink" title="三、安装"></a>三、安装</h1><p>有两种方式安装(CDN 和 npm)，大家可自行选择。</p>
+<h3 id="1-CDN"><a href="#1-CDN" class="headerlink" title="1. CDN"></a>1. CDN</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- or --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-npm"><a href="#2-npm" class="headerlink" title="2. npm"></a>2. npm</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> --save gitalk</span><br></pre></td></tr></table></figure>
+<h1 id="四、使用"><a href="#四、使用" class="headerlink" title="四、使用"></a>四、使用</h1><p>考虑到<code>vue</code>的生命周期等，使用方法上和官方文档给出来的是需要做略微的调整的。</p>
+<h3 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//在index.html页面中CDN引入</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="comment">//在vue中import</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> Gitalk <span class="keyword">from</span> <span class="string">'gitalk'</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="初始化-Gitalk-实例"><a href="#初始化-Gitalk-实例" class="headerlink" title="初始化 Gitalk 实例"></a>初始化 Gitalk 实例</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">export <span class="class">default </span>&#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">     return&#123;</span><br><span class="line"><span class="symbol">	gitalk:</span> new Gitalk(&#123;</span><br><span class="line"><span class="symbol">		clientID:</span> <span class="string">"你的clientID"</span>,</span><br><span class="line"><span class="symbol">        	clientSecret:</span> <span class="string">"你的clientSecret"</span>,</span><br><span class="line"><span class="symbol">        	repo:</span> <span class="string">"刚刚创建的项目名"</span>,</span><br><span class="line"><span class="symbol">        	owner:</span> <span class="string">"github用户名"</span>,</span><br><span class="line"><span class="symbol">        	admin:</span> [<span class="string">"github用户名"</span>],</span><br><span class="line"><span class="symbol">        	id:</span> window.location.hash, <span class="comment">// 默认为pathname,如果你也是像我这样用vue搭建的，我建议使用hash，原因具体后面会讨论到。</span></span><br><span class="line"><span class="symbol">        	distractionFreeMode:</span> false <span class="comment">// Facebook-like distraction free mode</span></span><br><span class="line">	&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在恰当的位置添加标签-用来渲染-Gitalk-组件。"><a href="#在恰当的位置添加标签-用来渲染-Gitalk-组件。" class="headerlink" title="在恰当的位置添加标签,用来渲染 Gitalk 组件。"></a>在恰当的位置添加标签,用来渲染 Gitalk 组件。</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"gitalk-container"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mounted()&#123;</span><br><span class="line">  <span class="keyword">this</span>.gitalk.render(<span class="string">"gitalk-container"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="五、注意事项"><a href="#五、注意事项" class="headerlink" title="五、注意事项"></a>五、注意事项</h1><h3 id="id-的设置"><a href="#id-的设置" class="headerlink" title="id 的设置"></a>id 的设置</h3><p>这个 id 是用来唯一区分页面的，也就是你不同的文章肯定有不同的评论数据，<code>Gitalk</code>要通过这个 id 来区分是哪个页面，然后在你的<code>github</code>仓库创建相应的<code>issue</code>来存放当页评论数据，<code>id</code>默认值是<code>window.location.pathname</code></p>
+<p>但是默认的只适用于采用<code>history</code>模式的路由，但对于<code>vue-router</code>这种默认采用<code>hash</code>模式的就不行了。</p>
+<p>举个例子</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在history模式下，路由URL如下格式</span></span><br><span class="line">www.rychou.<span class="built_in">xyz</span>/article/<span class="number">69</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.pathname;<span class="comment">// 值是 /article/69</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在hash模式下，路由变成这样了</span></span><br><span class="line">www.rychou.<span class="built_in">xyz</span>/<span class="meta">#/article/69</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.pathname; <span class="comment">// 值是 /</span></span><br></pre></td></tr></table></figure>
+<p>此时，在<code>hash</code>模式下<code>id</code>就不具有唯一性了。</p>
+<p>建议使用<code>window.location.hash</code>，此时的值是<code>#/aticle/69</code>,具有唯一性。</p>
+<p>当然你也可以设置<code>vue-router</code>为<code>history</code>模式，但是这会有一个刷新页面出现 404 的 BUG，解决办法参考<a href="https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="不使用类似的评论服务Gitment的原因"><a href="#不使用类似的评论服务Gitment的原因" class="headerlink" title="不使用类似的评论服务Gitment的原因"></a>不使用类似的评论服务<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a>的原因</h3><p>我也试过用<code>Gitment</code>，也成功了，但是有一个非常令人不爽的地方，就是每一篇文章都需要手动初始化(创建相应 issue)，因此我还是用了<code>Gitalk</code>,它会根据你的配置，自动帮你初始化。</p>
+<h1 id="六、最后"><a href="#六、最后" class="headerlink" title="六、最后"></a>六、最后</h1><p>有问题的同学们，欢迎来<a href="http://www.rychou.xyz/#/article/69">原文</a>下方提问，同时也相当于帮我测试一下评论服务了。</p>
+<blockquote>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">Gitalk</a></li>
+<li><a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a></li>
+<li><a href="https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations" target="_blank" rel="noopener">官方文档- vue-router History 模式</a></li>
+</ul>
+</blockquote>
+
+    </section>
+    <!-- Tags START -->
+    
+    <div class="tags">
+      <span>Tags:</span>
+      
+  <a href="/tags#Gitalk">
+    <span class="tag-code">Gitalk</span>
+  </a>
+
+    </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/17/用shelljs实现前端部署自动化/">
+        <span class="nav-arrow">← </span>
+        
+          用shelljs实现前端部署自动化
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/08/21/为你的博客添加目录索引/">
+        
+          为你的博客添加目录索引
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+    <!-- Gitment START -->
+    <div id="gitalk-container"></div>
+    <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、前言"><span class="toc-nav-text">一、前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、必要的准备"><span class="toc-nav-text">二、必要的准备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在-Github-创建一个用来存放评论的仓库"><span class="toc-nav-text">在 Github 创建一个用来存放评论的仓库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#注册一个Github-OAuth-application"><span class="toc-nav-text">注册一个Github OAuth application</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、安装"><span class="toc-nav-text">三、安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-CDN"><span class="toc-nav-text">1. CDN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-npm"><span class="toc-nav-text">2. npm</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#四、使用"><span class="toc-nav-text">四、使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入-gitalk"><span class="toc-nav-text">引入 gitalk</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化-Gitalk-实例"><span class="toc-nav-text">初始化 Gitalk 实例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在恰当的位置添加标签-用来渲染-Gitalk-组件。"><span class="toc-nav-text">在恰当的位置添加标签,用来渲染 Gitalk 组件。</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#渲染"><span class="toc-nav-text">渲染</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#五、注意事项"><span class="toc-nav-text">五、注意事项</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#id-的设置"><span class="toc-nav-text">id 的设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不使用类似的评论服务Gitment的原因"><span class="toc-nav-text">不使用类似的评论服务Gitment的原因</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#六、最后"><span class="toc-nav-text">六、最后</span></a></li>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'rychou.github.io/2018/08/18/用gitalk给你的博客添加评论服务/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'rychou.github.io/2018/08/18/用gitalk给你的博客添加评论服务/';
+  
+  (function () {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6fc309d5ef8fb81722a1',
+    clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
+    id: window.location.pathname,
+    repo: 'rychou.github.io',
+    owner: 'Rychou',
+    admin: 'Rychou'
+  })
+  gitalk.render('gitalk-container')
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy;
+    2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+  </p>
+</footer>
+
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

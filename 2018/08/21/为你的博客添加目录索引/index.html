@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A third year front end student from Hangzhou Dianzi University">
+  <meta name="keyword" content="Knowledge,Things">
+  
+  <link rel="shortcut icon" type="image/ico" href="source/css/images/favicon.ico">
+  
+  <title>
+    
+    为你的博客添加目录索引 |
+    Rychou&#39;blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Rychou'blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>
+    为你的博客添加目录索引
+  </h2>
+  <p class="post-date">
+    2018-08-21
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><h3 id="演示图例"><a href="#演示图例" class="headerlink" title="演示图例"></a>演示图例</h3><a id="more"></a>
+<p><img src="https://i.loli.net/2018/08/21/5b7c32d788779.gif" alt="GIF.gif"></p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>这个目录索引应该包含以下功能：</p>
+<ul>
+<li>点击目录项跳转到对应锚点</li>
+<li>屏幕滚动时，对应目录项样式变化</li>
+</ul>
+<p>话不多说，开始干！</p>
+<h1 id="二、点击目录项跳转到对应锚点"><a href="#二、点击目录项跳转到对应锚点" class="headerlink" title="二、点击目录项跳转到对应锚点"></a>二、点击目录项跳转到对应锚点</h1><h3 id="hash-模式的路由下的锚点"><a href="#hash-模式的路由下的锚点" class="headerlink" title="hash 模式的路由下的锚点"></a>hash 模式的路由下的锚点</h3><p>说到文章的目录索引，首先想到的就是锚点了。然而在<code>hash</code>模式的路由下，如果使用原始的锚点方案会造成下面这样的问题。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文章url链接,hash模式下</span></span><br><span class="line">www<span class="selector-class">.rychou</span><span class="selector-class">.xyz</span>/#/article/<span class="number">70</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果采用传统的锚点方式，比如有个锚点：anchor-1，点击之后，url会变成</span></span><br><span class="line"></span><br><span class="line">www<span class="selector-class">.rychou</span><span class="selector-class">.xyz</span>/#anchor-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>很明显，在<code>hash</code>模式下，就不能采用这种方式锚点了。我采用了自定义锚点的方式。</p>
+<blockquote>
+<p>参考：<a href="https://segmentfault.com/q/1010000007888351/a-1020000007889125" target="_blank" rel="noopener">vue2.0 中怎么做锚点定位</a></p>
+</blockquote>
+<h3 id="添加锚点和初始化目录的数据结构"><a href="#添加锚点和初始化目录的数据结构" class="headerlink" title="添加锚点和初始化目录的数据结构"></a>添加锚点和初始化目录的数据结构</h3><p>方法有了，然后就是怎么给文章加添加锚点了。</p>
+<p>我采用了遍历 dom 树，然后找到文章的<code>h1</code>标签（暂时只对<code>h1</code>标签建立索引），为其添加<code>id</code>的方式建立索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化文章锚点和目录数据结构</span></span><br><span class="line">getDirectories() &#123;</span><br><span class="line">      <span class="keyword">let</span> directories = <span class="built_in">document</span>.querySelectorAll(<span class="string">".article-content h1"</span>); <span class="comment">//找到属于文章内容的h1标签</span></span><br><span class="line">      directories.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        element.id = <span class="string">"anchor-"</span> + index;<span class="comment">//添加id</span></span><br><span class="line">        <span class="keyword">this</span>.directories.push(&#123;</span><br><span class="line">          title: element.innerText, <span class="comment">//h1标签文本内容</span></span><br><span class="line">          offsetTop: element.offsetTop, <span class="comment">//记录当前h1标签的偏移量，方便后面计算滚动距离。</span></span><br><span class="line">          isActive: <span class="literal">false</span> <span class="comment">//是否被选中</span></span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="实现点击跳转到对应锚点"><a href="#实现点击跳转到对应锚点" class="headerlink" title="实现点击跳转到对应锚点"></a>实现点击跳转到对应锚点</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> v-<span class="keyword">for</span>=<span class="string">"(item,index) in directories"</span> :key=<span class="string">"index"</span>&gt;</span><br><span class="line">   &lt;a href=<span class="string">"javascript:void(0)"</span> @click=<span class="string">"goAnchor(index)"</span> &gt;</span><br><span class="line">     &#123;&#123;item.title&#125;&#125;</span><br><span class="line">   &lt;/a&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">methods:&#123;</span><br><span class="line">  goAnchor(<span class="keyword">index</span>) &#123;</span><br><span class="line">      document.documentElement.scrollTop = <span class="keyword">this</span>.directories[<span class="keyword">index</span>].offsetTop;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、屏幕滚动时，对应目录项样式变化"><a href="#三、屏幕滚动时，对应目录项样式变化" class="headerlink" title="三、屏幕滚动时，对应目录项样式变化"></a>三、屏幕滚动时，对应目录项样式变化</h1><p>注意我们前面<strong>初始化目录数据结构</strong>中，包含了一个叫<code>isActive</code>的状态位，就是根据这个状态位来进行相应的渲染</p>
+<h3 id="动态绑定class"><a href="#动态绑定class" class="headerlink" title="动态绑定class"></a>动态绑定<code>class</code></h3><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"directories-container"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"directories-list"</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>目录<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">:class</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;'highlight-title':item.isActive&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in directories"</span> <span class="attr">:key</span>=<span class="string">"index"</span> <span class="attr">style</span>=<span class="string">"padding: 5px 12px;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> @<span class="attr">click</span>=<span class="string">"goAnchor(index)"</span> &gt;</span></span></span><br><span class="line"><span class="xml">          </span><span class="template-variable">&#123;&#123;item.title&#125;</span><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="添加滚动监听"><a href="#添加滚动监听" class="headerlink" title="添加滚动监听"></a>添加滚动监听</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 挂载页面时，添加滚动监听</span></span><br><span class="line">mounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll);</span><br><span class="line">  &#125;,</span><br><span class="line"><span class="comment">// 退出页面时，应该取消监听</span></span><br><span class="line">destroyed() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="计算状态位isActive"><a href="#计算状态位isActive" class="headerlink" title="计算状态位isActive"></a>计算状态位<code>isActive</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">handleScroll(e) &#123;</span><br><span class="line">      <span class="keyword">let</span> scrollTop = <span class="built_in">document</span>.documentElement.scrollTop <span class="comment">//当前滚动距离</span></span><br><span class="line">      <span class="keyword">this</span>.directories.forEach(<span class="function">(<span class="params">element,index</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>((scrollTop)&gt;=element.offsetTop)&#123;<span class="comment">//当前滚动距离大于某一目录项时。</span></span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;index;i++)&#123;</span><br><span class="line">            <span class="keyword">this</span>.directories[i].isActive = <span class="literal">false</span> <span class="comment">//同一时刻，只能有一个目录项的状态位为Active，即此时其他目录项的isActive = false</span></span><br><span class="line">          &#125;</span><br><span class="line">          element.isActive = <span class="literal">true</span>; <span class="comment">//将对应的目录项状态位置为true</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          element.isActive = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="css-样式"><a href="#css-样式" class="headerlink" title="css 样式"></a>css 样式</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scss</span></span><br><span class="line"><span class="selector-class">.directories-container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">15vw</span>;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">0.5s</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="selector-class">.highlight-title</span> &#123;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">3px</span> solid rgb(<span class="number">15</span>, <span class="number">105</span>, <span class="number">223</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: rgb(<span class="number">243</span>, <span class="number">243</span>, <span class="number">243</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">    <span class="selector-tag">a</span>&#123;</span><br><span class="line">      <span class="attribute">color</span>: rgb(<span class="number">15</span>, <span class="number">105</span>, <span class="number">223</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  .directories-list &#123;</span><br><span class="line">    position: -webkit-sticky;</span><br><span class="line">    <span class="attribute">position</span>: sticky;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">1px</span> solid rgb(<span class="number">236</span>, <span class="number">236</span>, <span class="number">236</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</span><br><span class="line">    <span class="selector-tag">a</span> &#123;</span><br><span class="line">      &amp;:hover &#123;</span><br><span class="line">        <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </section>
+    <!-- Tags START -->
+    
+    <div class="tags">
+      <span>Tags:</span>
+      
+  <a href="/tags#目录">
+    <span class="tag-code">目录</span>
+  </a>
+
+    </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/18/用gitalk给你的博客添加评论服务/">
+        <span class="nav-arrow">← </span>
+        
+          用gitalk给你的博客添加评论服务
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/08/30/小程序分享功能报错问题解决方案/">
+        
+          小程序分享功能报错问题解决方案
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+    <!-- Gitment START -->
+    <div id="gitalk-container"></div>
+    <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、前言"><span class="toc-nav-text">一、前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#演示图例"><span class="toc-nav-text">演示图例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#需求"><span class="toc-nav-text">需求</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、点击目录项跳转到对应锚点"><span class="toc-nav-text">二、点击目录项跳转到对应锚点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#hash-模式的路由下的锚点"><span class="toc-nav-text">hash 模式的路由下的锚点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#添加锚点和初始化目录的数据结构"><span class="toc-nav-text">添加锚点和初始化目录的数据结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#实现点击跳转到对应锚点"><span class="toc-nav-text">实现点击跳转到对应锚点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、屏幕滚动时，对应目录项样式变化"><span class="toc-nav-text">三、屏幕滚动时，对应目录项样式变化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#动态绑定class"><span class="toc-nav-text">动态绑定class</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#添加滚动监听"><span class="toc-nav-text">添加滚动监听</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#计算状态位isActive"><span class="toc-nav-text">计算状态位isActive</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#css-样式"><span class="toc-nav-text">css 样式</span></a></li></ol></li>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'rychou.github.io/2018/08/21/为你的博客添加目录索引/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'rychou.github.io/2018/08/21/为你的博客添加目录索引/';
+  
+  (function () {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6fc309d5ef8fb81722a1',
+    clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
+    id: window.location.pathname,
+    repo: 'rychou.github.io',
+    owner: 'Rychou',
+    admin: 'Rychou'
+  })
+  gitalk.render('gitalk-container')
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy;
+    2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+  </p>
+</footer>
+
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A third year front end student from Hangzhou Dianzi University">
+  <meta name="keyword" content="Knowledge,Things">
+  
+  <link rel="shortcut icon" type="image/ico" href="source/css/images/favicon.ico">
+  
+  <title>
+    
+    Mpvue中使用Vant Weapp组件库 |
+    Rychou&#39;blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Rychou'blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>
+    Mpvue中使用Vant Weapp组件库
+  </h2>
+  <p class="post-date">
+    2018-08-31
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h1 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h1><p><code>mpvue-vant</code>记录了我们团队开发中在<code>mpvue</code>中使用<code>Vant Weapp</code>组件库所踩下的坑，在这里分享给大家，让<code>mpvue</code>开发者可以使用<code>vant</code>组件库进行开发，避免踩不必要的坑。</p>
+<a id="more"></a>
+<p>此教程是在<a href="https://github.com/dov-yih" target="_blank" rel="noopener">dov-yih</a>一同协助下完成。经过测试，<a href="https://youzan.github.io/vant-weapp/#/intro" target="_blank" rel="noopener">Vant Weapp</a>下所有组件都能够在<code>mpvue</code>中使用</p>
+<ul>
+<li><a href="./demo">demo 地址</a></li>
+<li><a href="./blog/update.md">更新日志</a></li>
+</ul>
+<h1 id="二、使用方法"><a href="#二、使用方法" class="headerlink" title="二、使用方法"></a>二、使用方法</h1><blockquote>
+<p>目前 vant 已经支持了<code>npm</code>的方式，但是由于<code>node_modules</code>目录下的代码是不会被编进<code>dist</code>目录下的，所以暂时只能用<code>git</code>方式使用。</p>
+</blockquote>
+<h2 id="克隆-vant-仓库"><a href="#克隆-vant-仓库" class="headerlink" title="克隆 vant 仓库"></a>克隆 vant 仓库</h2><p>将<code>dist</code>目录下的所有文件复制到你项目的<code>/static/vant/</code>目录下。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/youzan/vant-weapp.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 当然你也可以克隆本仓库代码，本仓库会与`vant`仓库保持同步。直接将`vant`目录复制到`/static`目录下</span><br><span class="line"><span class="symbol">git clone https:</span>//github.com/xxxsimons/mpvue-vant.git</span><br></pre></td></tr></table></figure>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>在需要引入的页面目录下的<code>main.json</code>文件中</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"usingComponents"</span>: &#123;</span><br><span class="line">    <span class="attr">"van-button"</span>: <span class="string">"/static/vant/button/index"</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">van-button</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="三、注意事项"><a href="#三、注意事项" class="headerlink" title="三、注意事项"></a>三、注意事项</h1><p>具体组件 api 文档参考<a href="https://youzan.github.io/vant-weapp/#/intro" target="_blank" rel="noopener">Vant Weapp</a></p>
+<h2 id="1-使用方式"><a href="#1-使用方式" class="headerlink" title="1. 使用方式"></a>1. 使用方式</h2><p>mpvue 和原生小程序的方式有所不同。可以参考<a href="http://mpvue.com/" target="_blank" rel="noopener">mpvue 文档</a></p>
+<h3 id="1-1-数据绑定"><a href="#1-1-数据绑定" class="headerlink" title="1.1 数据绑定"></a>1.1 数据绑定</h3><p>原生小程序使用方式为</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">value</span>=<span class="string">"&#123;&#123;value&#125;&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>mpvue 使用方式</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v-bind:<span class="keyword">value</span>=<span class="string">"value"</span></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">:<span class="keyword">value</span>=<span class="string">"value"</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-事件监听"><a href="#1-2-事件监听" class="headerlink" title="1.2 事件监听"></a>1.2 事件监听</h3><p>原生小程序使用方式</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind:<span class="built_in">click</span>=<span class="string">"onClick"</span></span><br></pre></td></tr></table></figure>
+<p>mpvue 使用方式</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">click</span>=<span class="string">"onClick"</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-3-vue-中组件引入"><a href="#1-3-vue-中组件引入" class="headerlink" title="1.3 vue 中组件引入"></a>1.3 vue 中组件引入</h3><p><code>vant</code>中像<code>notify</code>这种操作反馈类的组件都有两个引入，一是组件的引入，这个在<code>main.json</code>中引入；另一个是方法的引入，需要在<code>vue</code>文件中<code>import</code>引入，值得注意的是，这里的引入不能使用绝对路径，可以用类似于这样的相对路径。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Notify <span class="keyword">from</span> <span class="string">'@/../static/notify/notify'</span> <span class="comment">//@是mpvue的一个别名，指向src目录</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-4-获取-event"><a href="#1-4-获取-event" class="headerlink" title="1.4 获取 event"></a>1.4 获取 event</h3><p>值得注意的是，<code>mpvue</code>中获取<code>event</code>值与原生小程序有所不同。举例：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">onChange</span><span class="params">(event)</span></span>&#123; <span class="comment">// 获取表单组件filed的值</span></span><br><span class="line">  console.log(event<span class="selector-class">.mp</span><span class="selector-class">.detail</span>) <span class="comment">// 注意加入mp</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-BUG-及报错处理方法"><a href="#2-BUG-及报错处理方法" class="headerlink" title="2. BUG 及报错处理方法"></a>2. BUG 及报错处理方法</h2><h3 id="2-1-监听名"><a href="#2-1-监听名" class="headerlink" title="2.1 监听名"></a>2.1 监听名</h3><p>mpvue 里面无法使用<code>@click-icon</code>这样的监听名,因此如果 API 文档里面有出现这样的监听名，那么需要手动修改源代码。</p>
+<p>可以改成驼峰式的监听名。</p>
+<p>eg: 我在<code>field</code>组件中就遇到这个问题，我的做法是：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static/vant/field/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'click-icon'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改为:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'clickIcon'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-报错"><a href="#2-2-报错" class="headerlink" title="2.2 报错"></a>2.2 报错</h3><p>一般的报错报错都可以通过一下流程处理。</p>
+<ul>
+<li>是否打开了微信开发者工具中的<code>ES6转ES5</code>功能。</li>
+<li>仔细检查代码和比对文档，看看是否有使用不当的地方。</li>
+<li>重新编译<code>npm run dev</code>或删掉<code>dist</code>目录重新<code>npm run dev</code></li>
+<li>重启或更新微信开发者工具。</li>
+</ul>
+<p>若以上流程都走完了，还是无法解决报错，可以通过提交<code>issues</code>的方式，我来帮你解决。</p>
+<h4 id="2-2-1-引入组件报错"><a href="#2-2-1-引入组件报错" class="headerlink" title="2.2.1 引入组件报错"></a>2.2.1 引入组件报错</h4><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VM54:<span class="number">1</span> thirdScriptError sdk uncaught third <span class="keyword">Error</span> <span class="keyword">module</span> <span class="string">"static/vant/notify/index.js"</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+<p>解决办法是：打开小程序开发者工具中的<strong>ES6 转 ES5</strong>功能. <a href="https://github.com/xxxsimons/mpvue-vant/issues/5#issuecomment-419620351" target="_blank" rel="noopener">issues/#5</a></p>
+<h1 id="3-其他组件库"><a href="#3-其他组件库" class="headerlink" title="3. 其他组件库"></a>3. 其他组件库</h1><p>目前比较好的组件库有三个，<a href="https://wux-weapp.github.io/wux-weapp-docs/#/" target="_blank" rel="noopener">Wux Weapp</a>,<a href="https://weapp.iviewui.com/" target="_blank" rel="noopener">iview weapp</a>,<a href="https://youzan.github.io/vant-weapp/#/intro" target="_blank" rel="noopener">Vant Weapp</a>。</p>
+<p>这三者都是用原生小程序写的组件库，因此理论上来说，在 mpvue 中都是可以无缝使用的。不同组件库的组件都不一样，有的更丰富，有的逻辑更完善，有的文档更清晰。因此用什么组件，还需要自己取舍。</p>
+<p>比如：三者中，唯有<a href="https://wux-weapp.github.io/wux-weapp-docs/#/" target="_blank" rel="noopener">Wux Weapp</a>有日历组件，而且它里面还有一些更高级的组件可以使用。</p>
+<p>使用方法上，几乎没有差异。值得注意的是，大家复制源代码到自己项目上时，应该复制<code>/dist/</code>目录下的文件。因为这里是经过编译后的。</p>
+<p>如果大家使用过程中遇到什么 BUG，可以通过提<a href="https://github.com/xxxsimons/mpvue-vant/issues" target="_blank" rel="noopener">issues</a>的方式让我知道，大家一起踩坑吧！</p>
+<h1 id="分享一个-Demo"><a href="#分享一个-Demo" class="headerlink" title="分享一个 Demo"></a>分享一个 Demo</h1><p>作者基于 vant 和 wux 组件库,以及最新的小程序云开发开发的一个小程序。以及总结了<code>mpvue</code>中使用云开发的注意事项，<a href="https://github.com/xxxsimons/mpvue-cloud" target="_blank" rel="noopener">mpvue-cloud</a></p>
+<p>猫叫助手|收录各种猫叫声，帮助与猫咪交流，分享一些养猫的小知识等。</p>
+<p><img src="https://i.loli.net/2018/10/10/5bbda0a989d9e.jpg" alt="mmexport1539139436955.jpg"></p>
+
+    </section>
+    <!-- Tags START -->
+    
+    <div class="tags">
+      <span>Tags:</span>
+      
+  <a href="/tags#mpvue">
+    <span class="tag-code">mpvue</span>
+  </a>
+
+  <a href="/tags#vant">
+    <span class="tag-code">vant</span>
+  </a>
+
+    </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/30/小程序输入框闪烁BUG解决方案/">
+        <span class="nav-arrow">← </span>
+        
+          小程序输入框闪烁BUG解决方案
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/09/18/Js学习笔记：回调函数/">
+        
+          Js学习笔记：回调函数
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+    <!-- Gitment START -->
+    <div id="gitalk-container"></div>
+    <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、介绍"><span class="toc-nav-text">一、介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、使用方法"><span class="toc-nav-text">二、使用方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#克隆-vant-仓库"><span class="toc-nav-text">克隆 vant 仓库</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#引入"><span class="toc-nav-text">引入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用"><span class="toc-nav-text">使用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、注意事项"><span class="toc-nav-text">三、注意事项</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-使用方式"><span class="toc-nav-text">1. 使用方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-数据绑定"><span class="toc-nav-text">1.1 数据绑定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-事件监听"><span class="toc-nav-text">1.2 事件监听</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-3-vue-中组件引入"><span class="toc-nav-text">1.3 vue 中组件引入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-4-获取-event"><span class="toc-nav-text">1.4 获取 event</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-BUG-及报错处理方法"><span class="toc-nav-text">2. BUG 及报错处理方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-监听名"><span class="toc-nav-text">2.1 监听名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-报错"><span class="toc-nav-text">2.2 报错</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-2-1-引入组件报错"><span class="toc-nav-text">2.2.1 引入组件报错</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-其他组件库"><span class="toc-nav-text">3. 其他组件库</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#分享一个-Demo"><span class="toc-nav-text">分享一个 Demo</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'rychou.github.io/2018/08/31/Mpvue中使用Vant Weapp组件库/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'rychou.github.io/2018/08/31/Mpvue中使用Vant Weapp组件库/';
+  
+  (function () {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6fc309d5ef8fb81722a1',
+    clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
+    id: window.location.pathname,
+    repo: 'rychou.github.io',
+    owner: 'Rychou',
+    admin: 'Rychou'
+  })
+  gitalk.render('gitalk-container')
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy;
+    2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+  </p>
+</footer>
+
+<script>
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
