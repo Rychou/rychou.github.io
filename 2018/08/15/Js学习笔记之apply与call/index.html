@@ -153,7 +153,7 @@
 </blockquote>
 <h1 id="二、Object-prototype-toString-call-进行类型检验"><a href="#二、Object-prototype-toString-call-进行类型检验" class="headerlink" title="二、Object.prototype.toString.call()进行类型检验"></a>二、Object.prototype.toString.call()进行类型检验</h1><p>首先来看一个问题，用 typeof 来检验类型有什么缺点呢？</p>
 <p>答案是 typeof 无法准确地检验对象类型。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">//object</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">//object</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>null</code>的类型是<code>object</code>，这是由于历史原因造成的。1995 年的 <code>JavaScript</code> 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑<code>null</code>，只把它当作<code>object</code>的一种特殊值。后来<code>null</code>独立出来，作为一种单独的数据类型，为了兼容以前的代码，<code>typeof null</code>返回<code>object</code>就没法改变了。</p>
 </blockquote>
