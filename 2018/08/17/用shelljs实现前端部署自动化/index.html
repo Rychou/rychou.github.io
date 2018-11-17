@@ -168,7 +168,7 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/08/15/Js学习笔记：apply与call/">
+      <a class="nav-left" href="/2018/08/15/Js学习笔记之apply与call/">
         <span class="nav-arrow">← </span>
         
           Js学习笔记：apply与call
@@ -307,10 +307,9 @@
   var gitalk = new Gitalk({
     clientID: '6fc309d5ef8fb81722a1',
     clientSecret: 'a695cccbd1ec29e16135a23420628bd962b4f17e',
-    id: document.title,
     repo: 'rychou.github.io',
     owner: 'Rychou',
-    admin: 'Rychou'
+    admin: ['Rychou']
   })
   gitalk.render('gitalk-container')
 </script>
