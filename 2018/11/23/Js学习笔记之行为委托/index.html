@@ -10,7 +10,7 @@
   
   <title>
     
-    在富文本编辑器之外使用quill富文本样式 |
+    Js学习笔记之行为委托 |
     Rychou&#39;blog
     
   </title>
@@ -113,10 +113,10 @@
 
     <div id="article-banner">
   <h2>
-    在富文本编辑器之外使用quill富文本样式
+    Js学习笔记之行为委托
   </h2>
   <p class="post-date">
-    2018-07-17
+    2018-11-23
   </p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -126,36 +126,31 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content">
-      <p>在将使用富文本编辑器时遇到了一个这样的问题：如何在富文本编辑器 VueEditor 之外依然能够有原来的样式</p>
-<p>一开始的思路是全局引入 quill 的样式文件，因为 VueEditor 是基于 quill 的一个富文本编辑器</p>
+      <h1 id="什么是行为委托"><a href="#什么是行为委托" class="headerlink" title="什么是行为委托"></a>什么是行为委托</h1><p>行为委托是一种不同于类的设计模式</p>
 <a id="more"></a>
-<pre><code class="js">npm install quill@1.3.6 //先安装quill
-
-//在main.js引入样式文件
-import &#39;quill/dist/quill.core.css&#39;
-import &#39;quill/dist/quill.snow.css&#39;
-import &#39;quill/dist/quill.bubble.css&#39;
-
-</code></pre>
-<p>结果发现依然行不通，通过查看 quill 的样式文件发现</p>
-<pre><code class="css">//quill/dist/quill.snow.css
-
-.ql-snow .ql-editor pre.ql-syntax {
-  //这是富文本编辑器中代码段（code）的样式
-  background-color: #23241f;
-  color: #f8f8f2;
-  overflow: visible;
-}
-</code></pre>
-<p>样式文件是使用了父元素控制的，而通过富文本编辑器生成的 html 字符串中，是没有包含父元素的，因此在要渲染 html 的元素中给他嵌套父元素以及赋予相应的 class 就可以了！</p>
-<pre><code class="html">&lt;div class=&quot;ql-container ql-snow&quot; style=&quot;border:none&quot;&gt;
-  &lt;div class=&quot;ql-editor&quot;&gt;
-    &lt;div v-html=&quot;article.content&quot;&gt;&lt;/div&gt;
-    //这是渲染html字符串的元素，其余是给他嵌套的父元素
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<p>参考链接：<a href="https://segmentfault.com/q/1010000012313485" target="_blank" rel="noopener">https://segmentfault.com/q/1010000012313485</a></p>
+<p>下面这段是类的设计模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> </span>&#123;</span><br><span class="line">  id;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** 构造函数 Task()*/</span></span><br><span class="line">  Task(ID) &#123; id = ID; &#125;</span><br><span class="line">  outputTask() &#123; output( id ); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XYZ</span> <span class="title">inherits</span> <span class="title">Task</span> </span>&#123;</span><br><span class="line">  label;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** 构造函数 XYZ()*/</span></span><br><span class="line">  XYZ(ID,Label) &#123; <span class="keyword">super</span>( ID ); label = Label; &#125;</span><br><span class="line">  outputTask() &#123; <span class="keyword">super</span>(); output( label ); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ABC</span> <span class="title">inherits</span> <span class="title">Task</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Task = &#123;</span><br><span class="line">  setID: <span class="function"><span class="keyword">function</span>(<span class="params">ID</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = ID</span><br><span class="line">  &#125;,</span><br><span class="line">  outputID: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 让 XYZ 委托 Task*/</span></span><br><span class="line">XYZ = <span class="built_in">Object</span>.create(Task)</span><br><span class="line">XYZ.prepareTask = <span class="function"><span class="keyword">function</span>(<span class="params">ID, Label</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.setID(ID)</span><br><span class="line">  <span class="keyword">this</span>.label = Label</span><br><span class="line">&#125;</span><br><span class="line">XYZ.outputTaskDetails = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.outputID()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.label)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ABC = Object.create( Task );</span></span><br><span class="line"><span class="comment">// ABC ... = ...</span></span><br></pre></td></tr></table></figure>
+<p>在这段代码中， Task 和 XYZ 并不是类（或者函数），它们是对象。 XYZ 通过 <code>Object.create(..)</code> 创建，它的 <code>[[Prototype]]</code> 委托了 Task 对象</p>
+<p>从代码中可以看出，行为委托的设计模式与类的“父子对象”不同，使用的是一种“兄弟对象”</p>
+<p>相比于类的设计模式：</p>
+<ol>
+<li><p>在上面的代码中， <code>id</code> 和 <code>label</code> 数据成员都是直接存储在 XYZ 上（而不是 Task ）。通常来说，在 <code>[[Prototype]]</code> 委托中最好把状态保存在委托者（ XYZ 、 ABC ）而不是委托目标（ Task ）上</p>
+</li>
+<li><p>在类设计模式中，我们故意让父类（ Task ）和子类（ XYZ ）中都有 <code>outputTask</code> 方法，这样就可以利用重写（多态）的优势。在委托行为中则恰好相反：我们会尽量避免在<code>[[Prototype]]</code> 链的不同级别中使用相同的命名，否则就需要使用笨拙并且脆弱的语法来消除引用歧义.</p>
+<p>这个设计模式要求尽量少使用容易被重写的通用方法名，提倡使用更有描述性的方法名，尤其是要写清相应对象行为的类型。这样做实际上可以创建出更容易理解和维护的代码，因为方法名（不仅在定义的位置，而是贯穿整个代码）更加清晰</p>
+</li>
+<li><p><code>this.setID(ID)</code> ； XYZ 中的方法首先会寻找 XYZ 自身是否有 <code>setID(..)</code> ，但是 XYZ 中并没有这个方法名，因此会通过 <code>[[Prototype]]</code> 委托关联到 Task 继续寻找，这时就可以找到<code>setID(..)</code> 方法。此外，由于调用位置触发了 this 的隐式绑定规则（参见第 2 章），因此虽然 <code>setID(..)</code> 方法在 Task 中，运行时 <code>this</code> 仍然会绑定到 XYZ ，这正是我们想要的。在之后的代码中我们还会看到 <code>this.outputID()</code> ，原理相同。</p>
+<p>换句话说，我们和 XYZ 进行交互时可以使用 Task 中的通用方法，因为 XYZ 委托了 Task</p>
+</li>
+</ol>
+<p>委托行为意味着某些对象（ XYZ ）在找不到属性或者方法引用时会把这个请求委托给另一个对象（ Task ）。</p>
+<p>这是一种极其强大的设计模式，和父类、子类、继承、多态等概念完全不同。在你的脑海中对象并不是按照父类到子类的关系垂直组织的，而是通过任意方向的委托关联并排组织的。</p>
+<blockquote>
+<p>本文参考自：</p>
+<p>书籍：P164，<a href="https://book.douban.com/subject/26351021/" target="_blank" rel="noopener">你不知道的 Javascript 之闭包——上卷</a>。</p>
+<p>附：<a href="https://pan.baidu.com/s/16SXRXo4jXDO_RZHphWv0oA" target="_blank" rel="noopener">你不知道的 Javascript 系列电子书网盘链接</a>， 密码：i8jf</p>
+</blockquote>
 
     </section>
     <!-- Tags START -->
@@ -163,12 +158,8 @@ import &#39;quill/dist/quill.bubble.css&#39;
     <div class="tags">
       <span>Tags:</span>
       
-  <a href="/tags#踩坑">
-    <span class="tag-code">踩坑</span>
-  </a>
-
-  <a href="/tags#vue">
-    <span class="tag-code">vue</span>
+  <a href="/tags#Javascript">
+    <span class="tag-code">Javascript</span>
   </a>
 
     </div>
@@ -179,20 +170,13 @@ import &#39;quill/dist/quill.bubble.css&#39;
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2017/12/06/2017-12-6/">
+      <a class="nav-left" href="/2018/11/05/简谈文件下载的三种方式/">
         <span class="nav-arrow">← </span>
         
-          发布你的第一个npm包！
+          简谈文件下载的三种方式
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/07/17/小程序Tabs懒加载/">
-        
-          小程序Tabs懒加载
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -233,7 +217,7 @@ import &#39;quill/dist/quill.bubble.css&#39;
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是行为委托"><span class="toc-nav-text">什么是行为委托</span></a></li></ol>
     
   </div>
 </aside>
@@ -243,7 +227,7 @@ import &#39;quill/dist/quill.bubble.css&#39;
 
 <script>
   (function () {
-    var url = 'rychou.github.io/2018/07/17/在富文本编辑器之外使用quill富文本样式/';
+    var url = 'rychou.github.io/2018/11/23/Js学习笔记之行为委托/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
