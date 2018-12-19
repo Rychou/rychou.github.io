@@ -15,7 +15,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -114,6 +114,28 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2018/08/18/用gitalk给你的博客添加评论服务/">用gitalk给你的博客添加评论服务</a>
+      </h2>
+      <p class="article-date">2018年8月18日</p>
+      
+        
+  <a href="/tags#Gitalk">
+    <span class="tag-code">Gitalk</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>不像 hexo、jekyll 等，为了学习，我的博客是用<code>vue</code>和<code>nodejs</code>搭建出来的。支持在线编辑和 markdown 渲染等功能。</p>
+<p>大家如果感兴趣可以看我的<a href="www.rychou.xyz">博客地址</a></p>
+<p>最近给自己的博客添加了评论服务，用到的评论服务是<a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">Gitalk</a>，它是基于<code>github issue</code>搭建出来的评论系统。废话不多说，接下来说说如何使用。</p>
+        
+      </div>
+      <a class="more" href="/2018/08/18/用gitalk给你的博客添加评论服务/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2018/08/17/用shelljs实现前端部署自动化/">用shelljs实现前端部署自动化</a>
       </h2>
       <p class="article-date">2018年8月17日</p>
@@ -169,16 +191,16 @@
       <p class="article-date">2018年7月23日</p>
       
         
+  <a href="/tags#mpvue">
+    <span class="tag-code">mpvue</span>
+  </a>
+
   <a href="/tags#小程序">
     <span class="tag-code">小程序</span>
   </a>
 
   <a href="/tags#录音">
     <span class="tag-code">录音</span>
-  </a>
-
-  <a href="/tags#mpvue">
-    <span class="tag-code">mpvue</span>
   </a>
 
       
@@ -300,26 +322,6 @@
       <a class="more" href="/2017/12/06/2017-12-6/">Read more</a>
     </article>
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/11/27/2017-11-27/">C++中的引用转化为C语言的指针</a>
-      </h2>
-      <p class="article-date">2017年11月27日</p>
-      
-        
-  <a href="/tags#C++ C">
-    <span class="tag-code">C++ C</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <h1 id="C-中引用符号-amp-转化为C语言的指针-的方法"><a href="#C-中引用符号-amp-转化为C语言的指针-的方法" class="headerlink" title="C++中引用符号&amp;转化为C语言的指针*的方法"></a>C++中引用符号&amp;转化为C语言的指针*的方法</h1><p>最近在写数据结构上机作业时，在网上借鉴(抄)其他人的源代码时，发现有些C语言代码中夹杂着C++的代码，比如这个C++的引用符&amp;就让我很头疼，因为C中没有引用这个概念。其实在C++中是可以完美运行的，但是我又不想在C++里运行，就想怎样让其在C中运行呢。经过百般努力，终于成功了。<br></p>
-        
-      </div>
-      <a class="more" href="/2017/11/27/2017-11-27/">Read more</a>
-    </article>
-  
 
   
     <div class="guide-pager">
@@ -381,6 +383,10 @@
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

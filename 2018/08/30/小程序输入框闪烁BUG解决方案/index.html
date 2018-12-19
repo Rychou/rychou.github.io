@@ -16,7 +16,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -136,7 +136,7 @@
 <h3 id="一、弃用v-model-使用-input"><a href="#一、弃用v-model-使用-input" class="headerlink" title="一、弃用v-model,使用@input"></a>一、弃用<code>v-model</code>,使用<code>@input</code></h3><p>适用于<code>input</code>组件单纯是用户手动输入的，而没有像<strong>授权获取手机号</strong>，然后自动填入<code>input</code>组件中。这种需要赋予初始<code>value</code>的情况。即适用于<strong>单向绑定，而不是双向绑定</strong>。</p>
 <figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 父组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;childInput <span class="meta">@input</span>=<span class="string">"onInput"</span>/&gt; &lt;-- 注意这里不能使用:<span class="keyword">value</span>=<span class="keyword">value</span>赋予初始值，否则又会出现闪烁的BUG，因为此时就等同于v-model了</span><br><span class="line"></span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">import</span> ChildInput from <span class="string">'./ChildInput'</span></span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  components:&#123; ChildInput &#125;,</span><br><span class="line">  data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="keyword">value</span>:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods()&#123;</span><br><span class="line">    onInput(e)&#123;</span><br><span class="line">  	<span class="keyword">this</span>.<span class="keyword">value</span> = e</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 子组件 ChildInput</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// html</span></span><br><span class="line"></span><br><span class="line">&lt;input <span class="meta">@input</span>=<span class="string">"$emit('input',$event)"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="二、不封装input组件，直接使用v-model"><a href="#二、不封装input组件，直接使用v-model" class="headerlink" title="二、不封装input组件，直接使用v-model"></a>二、不封装<code>input</code>组件，直接使用<code>v-model</code></h3><p>这种情况就是可以直接双向绑定的了。具体原因还不清楚，可能是本身原生小程序的 BUG。</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 父组件,不使用封装的子组件，直接使用原生组件。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;input v-model=<span class="string">"value"</span>/&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">export</span> <span class="built_in">default</span> &#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      value:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 父组件,不使用封装的子组件，直接使用原生组件。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;input v-model=<span class="string">"value"</span>/&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      value:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </section>
     <!-- Tags START -->
@@ -156,17 +156,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/08/21/为你的博客添加目录索引/">
+      <a class="nav-left" href="/2018/08/30/小程序分享功能报错问题解决方案/">
         <span class="nav-arrow">← </span>
         
-          为你的博客添加目录索引
+          小程序分享功能报错问题解决方案
         
       </a>
     
     
-      <a class="nav-right" href="/2018/08/30/小程序分享功能报错问题解决方案/">
+      <a class="nav-right" href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">
         
-          小程序分享功能报错问题解决方案
+          Mpvue中使用Vant Weapp组件库
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -221,7 +221,7 @@
 <script>
   (function () {
     var url = 'rychou.github.io/2018/08/30/小程序输入框闪烁BUG解决方案/';
-    var banner = ''
+    var banner = 'https://i.loli.net/2018/12/19/5c19b9872ba99.jpg'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -338,6 +338,10 @@
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

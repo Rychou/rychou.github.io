@@ -16,7 +16,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -137,103 +137,21 @@
 <li>mpvue snippets 小程序和 mpvue 代码提示</li>
 <li>Vetur Vue 开发工具</li>
 </ul>
-<h3 id="2-normalize-前端解析-Json-API"><a href="#2-normalize-前端解析-Json-API" class="headerlink" title="2. normalize 前端解析 Json API"></a>2. <a href="https://github.com/yury-dymov/json-api-normalizer" target="_blank" rel="noopener">normalize 前端解析 Json API</a></h3><pre><code>a:{
-  1:{
-    type:&#39;&#39;,
-    id:&#39;&#39;
-  }
-}
-
-对于这种对象的key为数字的，然而并不知道数字是啥，可以使用a[Object.keys(a)[0]]来访问第一个元素
-</code></pre><h3 id="3-mpvue-router-patch在-mpvue-中使用-vue-router-的写法"><a href="#3-mpvue-router-patch在-mpvue-中使用-vue-router-的写法" class="headerlink" title="3. mpvue-router-patch在 mpvue 中使用 vue-router 的写法"></a>3. <a href="https://github.com/F-loat/mpvue-router-patch" target="_blank" rel="noopener">mpvue-router-patch</a>在 mpvue 中使用 vue-router 的写法</h3><h3 id="4-flyio-发起网络请求"><a href="#4-flyio-发起网络请求" class="headerlink" title="4. flyio 发起网络请求"></a>4. <a href="https://www.npmjs.com/package/flyio" target="_blank" rel="noopener">flyio 发起网络请求</a></h3><h3 id="5-封装小程序-API，实现异步调用"><a href="#5-封装小程序-API，实现异步调用" class="headerlink" title="5. 封装小程序 API，实现异步调用"></a>5. 封装小程序 API，实现异步调用</h3><pre><code>// WXP.js
-
-// 核心
-function f (func, obj) {
-  return new Promise((resolve, reject) =&gt; {
-    func({
-      ...obj,
-      success: resolve,
-      fail: reject
-    })
-  })
-}
-
-export default {
-
-  // 获取认证 code
-  login: obj =&gt; f(wx.login, obj),
-}
-
-//使用
-
-import WXP from &#39;WXP&#39;
-
-WXP.login({})
-    .then(res=&gt;{})
-    .catch(err=&gt;{})
-</code></pre><h3 id="6-Promise-实现-finally"><a href="#6-Promise-实现-finally" class="headerlink" title="6. Promise 实现 finally."></a>6. Promise 实现 finally.</h3><pre><code>// 安装
-npm i --save promise.prototype.finally
-
-// main.js引入
-require(&#39;promise.prototype.finally&#39;).shim();
-
-// 使用
-promise()//某个异步操作
-.then()
-.catch()
-.finally()
-</code></pre><h1 id="三、踩坑"><a href="#三、踩坑" class="headerlink" title="三、踩坑"></a>三、踩坑</h1><h3 id="1-修改-v-html-渲染的标签样式不生效的问题"><a href="#1-修改-v-html-渲染的标签样式不生效的问题" class="headerlink" title="1.修改 v-html 渲染的标签样式不生效的问题"></a>1.修改 v-html 渲染的标签样式不生效的问题</h3><p>产生原因：在<style scoped></style>中加了 scoped 属性，这个属性的作用是让样式私有化（只在本组件生效）。而使用了 v-html 之后，其实际是被当成子组件了，因此导致样式不生效</p>
+<h3 id="2-normalize-前端解析-Json-API"><a href="#2-normalize-前端解析-Json-API" class="headerlink" title="2. normalize 前端解析 Json API"></a>2. <a href="https://github.com/yury-dymov/json-api-normalizer" target="_blank" rel="noopener">normalize 前端解析 Json API</a></h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">a</span>:&#123;</span><br><span class="line">  <span class="number">1</span>:&#123;</span><br><span class="line">    <span class="attribute">type</span>:<span class="string">''</span>,</span><br><span class="line">    <span class="attribute">id</span>:<span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">对于这种对象的<span class="selector-tag">key</span>为数字的，然而并不知道数字是啥，可以使用<span class="selector-tag">a</span><span class="selector-attr">[Object.keys(a)[0]</span>]来访问第一个元素</span><br></pre></td></tr></table></figure>
+<h3 id="3-mpvue-router-patch在-mpvue-中使用-vue-router-的写法"><a href="#3-mpvue-router-patch在-mpvue-中使用-vue-router-的写法" class="headerlink" title="3. mpvue-router-patch在 mpvue 中使用 vue-router 的写法"></a>3. <a href="https://github.com/F-loat/mpvue-router-patch" target="_blank" rel="noopener">mpvue-router-patch</a>在 mpvue 中使用 vue-router 的写法</h3><h3 id="4-flyio-发起网络请求"><a href="#4-flyio-发起网络请求" class="headerlink" title="4. flyio 发起网络请求"></a>4. <a href="https://www.npmjs.com/package/flyio" target="_blank" rel="noopener">flyio 发起网络请求</a></h3><h3 id="5-封装小程序-API，实现异步调用"><a href="#5-封装小程序-API，实现异步调用" class="headerlink" title="5. 封装小程序 API，实现异步调用"></a>5. 封装小程序 API，实现异步调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WXP.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 核心</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params">func, obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    func(&#123;</span><br><span class="line">      ...obj,</span><br><span class="line">      success: resolve,</span><br><span class="line">      fail: reject</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取认证 code</span></span><br><span class="line">  login: <span class="function"><span class="params">obj</span> =&gt;</span> f(wx.login, obj),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> WXP <span class="keyword">from</span> <span class="string">'WXP'</span></span><br><span class="line"></span><br><span class="line">WXP.login(&#123;&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;&#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-Promise-实现-finally"><a href="#6-Promise-实现-finally" class="headerlink" title="6. Promise 实现 finally."></a>6. Promise 实现 finally.</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装</span></span><br><span class="line"><span class="selector-tag">npm</span> <span class="selector-tag">i</span> <span class="selector-tag">--save</span> <span class="selector-tag">promise</span><span class="selector-class">.prototype</span><span class="selector-class">.finally</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js引入</span></span><br><span class="line"><span class="selector-tag">require</span>(<span class="string">'promise.prototype.finally'</span>)<span class="selector-class">.shim</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-tag">promise</span>()<span class="comment">//某个异步操作</span></span><br><span class="line"><span class="selector-class">.then</span>()</span><br><span class="line"><span class="selector-class">.catch</span>()</span><br><span class="line"><span class="selector-class">.finally</span>()</span><br></pre></td></tr></table></figure>
+<h1 id="三、踩坑"><a href="#三、踩坑" class="headerlink" title="三、踩坑"></a>三、踩坑</h1><h3 id="1-修改-v-html-渲染的标签样式不生效的问题"><a href="#1-修改-v-html-渲染的标签样式不生效的问题" class="headerlink" title="1.修改 v-html 渲染的标签样式不生效的问题"></a>1.修改 v-html 渲染的标签样式不生效的问题</h3><p>产生原因：在<style scoped></style>中加了 scoped 属性，这个属性的作用是让样式私有化（只在本组件生效）。而使用了 v-html 之后，其实际是被当成子组件了，因此导致样式不生效</p>
 <p>解决办法：去掉<style scoped></style>中的 scoped</p>
-<pre><code>&lt;template&gt;
-  &lt;div v-html=&quot;htmlString&quot;&gt;&lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default{
-  data(){
-    return(){
-      htmlString:&#39;&#39;//要渲染的html字符串
-    }
-  }
-}
-&lt;/script&gt;
-
-&lt;style lang=&quot;scss&quot;&gt;//去掉scoped
-&lt;/style&gt;
-</code></pre><h3 id="2-如何在-vue-中使用-hightlight-js-高亮你的代码"><a href="#2-如何在-vue-中使用-hightlight-js-高亮你的代码" class="headerlink" title="2. 如何在 vue 中使用 hightlight.js 高亮你的代码"></a>2. 如何在 vue 中使用 hightlight.js 高亮你的代码</h3><h4 id="安装-highlight-js"><a href="#安装-highlight-js" class="headerlink" title="安装 highlight.js"></a>安装 highlight.js</h4><pre><code>npm install highlight.js --save
-</code></pre><h4 id="在顶层-main-js-中加入以下代码段"><a href="#在顶层-main-js-中加入以下代码段" class="headerlink" title="在顶层 main.js 中加入以下代码段"></a>在顶层 main.js 中加入以下代码段</h4><pre><code>import hljs from &#39;highlight.js&#39;
-import &#39;highlight.js/styles/monokai.css&#39;//样式文件
-
-//vue自定义指令，检索所有的code标签进行高亮
-Vue.directive(&#39;highlight&#39;,function (el) {
-  let blocks = el.querySelectorAll(&#39;code&#39;);
-  blocks.forEach((block)=&gt;{
-    hljs.highlightBlock(block)
-  })
-})
-</code></pre><h4 id="在你文章的顶层标签加入自定义指令-v-highlight"><a href="#在你文章的顶层标签加入自定义指令-v-highlight" class="headerlink" title="在你文章的顶层标签加入自定义指令 v-highlight"></a>在你文章的顶层标签加入自定义指令 v-highlight</h4><pre><code>&lt;div class=&quot;article-body&quot; v-html=&quot;compileMarkdown&quot; v-highlight&gt;&lt;/div&gt;
-</code></pre><h3 id="3-不要在-computed-内使用-split-方法"><a href="#3-不要在-computed-内使用-split-方法" class="headerlink" title="3. 不要在 computed 内使用 split()方法"></a>3. 不要在 computed 内使用 split()方法</h3><h3 id="4-wx-showToast-title-’text’-image-’-state-xx-png’-需要用绝对路径"><a href="#4-wx-showToast-title-’text’-image-’-state-xx-png’-需要用绝对路径" class="headerlink" title="4.wx.showToast({title:’text’,image:’/state/xx.png’})需要用绝对路径"></a>4.wx.showToast({title:’text’,image:’/state/xx.png’})需要用绝对路径</h3><h3 id="5-lt-scroll-view-gt-lt-scroll-view-gt-组件"><a href="#5-lt-scroll-view-gt-lt-scroll-view-gt-组件" class="headerlink" title="5. &lt;scroll-view&gt;&lt;/scroll-view&gt;组件"></a>5. <code>&lt;scroll-view&gt;&lt;/scroll-view&gt;</code>组件</h3><h4 id="5-1-如若需要竖向滚动，则需要设置固定高度，并且单位不能为-rpx（设置成-rpx-会有显示的问题，显示不全）"><a href="#5-1-如若需要竖向滚动，则需要设置固定高度，并且单位不能为-rpx（设置成-rpx-会有显示的问题，显示不全）" class="headerlink" title="5.1. 如若需要竖向滚动，则需要设置固定高度，并且单位不能为 rpx（设置成 rpx 会有显示的问题，显示不全）"></a>5.1. 如若需要竖向滚动，则需要设置固定高度，并且单位不能为 rpx（设置成 rpx 会有显示的问题，显示不全）</h4><pre><code>&lt;scroll-view
-          :scroll-y=&quot;true&quot;
-          :style=&quot;{&#39;height&#39;: scrollHeight+&#39;px;&#39;,&#39;padding-top&#39;:&#39;100rpx&#39;}&quot; //切不要设置成rpx，否则会出现显示不全的bug
-          :enable-back-to-top=&quot;true&quot;
-          @scrolltolower=&quot;loadData&quot;
-        &gt;
-...
-&lt;/scroll-view&gt;
-
-//获取屏幕高度
-wx.getSystemInfo({
-      success: res =&gt; {
-        this.scrollHeight = parseInt(res.windowHeight);
-      }
-    });
-</code></pre><h4 id="5-2-使用-lt-scroll-view-gt-lt-scroll-view-gt-组件与onPullDownRefresh不能同时使用"><a href="#5-2-使用-lt-scroll-view-gt-lt-scroll-view-gt-组件与onPullDownRefresh不能同时使用" class="headerlink" title="5.2.使用&lt;scroll-view&gt;&lt;/scroll-view&gt;组件与onPullDownRefresh不能同时使用"></a>5.2.使用<code>&lt;scroll-view&gt;&lt;/scroll-view&gt;</code>组件与<code>onPullDownRefresh</code>不能同时使用</h4><p>参考：<a href="https://blog.csdn.net/zhenqiangzhang/article/details/54347602" target="_blank" rel="noopener">微信小程序—下拉刷新上拉加载</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">"htmlString"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="undefined">  data()&#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span>()&#123;</span></span><br><span class="line"><span class="actionscript">  	htmlString:<span class="string">''</span><span class="comment">//要渲染的html字符串</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span><span class="undefined">//去掉scoped</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-如何在-vue-中使用-hightlight-js-高亮你的代码"><a href="#2-如何在-vue-中使用-hightlight-js-高亮你的代码" class="headerlink" title="2. 如何在 vue 中使用 hightlight.js 高亮你的代码"></a>2. 如何在 vue 中使用 hightlight.js 高亮你的代码</h3><h4 id="安装-highlight-js"><a href="#安装-highlight-js" class="headerlink" title="安装 highlight.js"></a>安装 highlight.js</h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install </span>highlight.<span class="keyword">js </span>--save</span><br></pre></td></tr></table></figure>
+<h4 id="在顶层-main-js-中加入以下代码段"><a href="#在顶层-main-js-中加入以下代码段" class="headerlink" title="在顶层 main.js 中加入以下代码段"></a>在顶层 main.js 中加入以下代码段</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hljs <span class="keyword">from</span> <span class="string">'highlight.js'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'highlight.js/styles/monokai.css'</span><span class="comment">//样式文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//vue自定义指令，检索所有的code标签进行高亮</span></span><br><span class="line">Vue.directive(<span class="string">'highlight'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> blocks = el.querySelectorAll(<span class="string">'code'</span>);</span><br><span class="line">  blocks.forEach(<span class="function">(<span class="params">block</span>)=&gt;</span>&#123;</span><br><span class="line">    hljs.highlightBlock(block)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="在你文章的顶层标签加入自定义指令-v-highlight"><a href="#在你文章的顶层标签加入自定义指令-v-highlight" class="headerlink" title="在你文章的顶层标签加入自定义指令 v-highlight"></a>在你文章的顶层标签加入自定义指令 v-highlight</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-body"</span> v-html=<span class="string">"compileMarkdown"</span> v-highlight&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="3-不要在-computed-内使用-split-方法"><a href="#3-不要在-computed-内使用-split-方法" class="headerlink" title="3. 不要在 computed 内使用 split()方法"></a>3. 不要在 computed 内使用 split()方法</h3><h3 id="4-wx-showToast-title-’text’-image-’-state-xx-png’-需要用绝对路径"><a href="#4-wx-showToast-title-’text’-image-’-state-xx-png’-需要用绝对路径" class="headerlink" title="4.wx.showToast({title:’text’,image:’/state/xx.png’})需要用绝对路径"></a>4.wx.showToast({title:’text’,image:’/state/xx.png’})需要用绝对路径</h3><h3 id="5-lt-scroll-view-gt-lt-scroll-view-gt-组件"><a href="#5-lt-scroll-view-gt-lt-scroll-view-gt-组件" class="headerlink" title="5. &lt;scroll-view&gt;&lt;/scroll-view&gt;组件"></a>5. <code>&lt;scroll-view&gt;&lt;/scroll-view&gt;</code>组件</h3><h4 id="5-1-如若需要竖向滚动，则需要设置固定高度，并且单位不能为-rpx（设置成-rpx-会有显示的问题，显示不全）"><a href="#5-1-如若需要竖向滚动，则需要设置固定高度，并且单位不能为-rpx（设置成-rpx-会有显示的问题，显示不全）" class="headerlink" title="5.1. 如若需要竖向滚动，则需要设置固定高度，并且单位不能为 rpx（设置成 rpx 会有显示的问题，显示不全）"></a>5.1. 如若需要竖向滚动，则需要设置固定高度，并且单位不能为 rpx（设置成 rpx 会有显示的问题，显示不全）</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;scroll-view</span><br><span class="line">          <span class="function">:scroll-y</span>=<span class="string">"true"</span></span><br><span class="line">          <span class="function">:style</span>=<span class="string">"&#123;'height': scrollHeight+'px;','padding-top':'100rpx'&#125;"</span> <span class="string">//</span>切不要设置成rpx，否则会出现显示不全的bug</span><br><span class="line">          <span class="function">:enable-back-to-top</span>=<span class="string">"true"</span></span><br><span class="line">          @scrolltolower=<span class="string">"loadData"</span></span><br><span class="line">        &gt;</span><br><span class="line"><span class="string">...</span></span><br><span class="line">&lt;<span class="string">/scroll-view</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="string">//</span>获取屏幕高度</span><br><span class="line">wx.getSystemInfo<span class="params">(&#123;</span></span><br><span class="line"><span class="params">      success: <span class="attr">res</span> =&gt; &#123;</span></span><br><span class="line"><span class="params">        this.<span class="attr">scrollHeight</span> = parseInt(res.windowHeight)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-使用-lt-scroll-view-gt-lt-scroll-view-gt-组件与onPullDownRefresh不能同时使用"><a href="#5-2-使用-lt-scroll-view-gt-lt-scroll-view-gt-组件与onPullDownRefresh不能同时使用" class="headerlink" title="5.2.使用&lt;scroll-view&gt;&lt;/scroll-view&gt;组件与onPullDownRefresh不能同时使用"></a>5.2.使用<code>&lt;scroll-view&gt;&lt;/scroll-view&gt;</code>组件与<code>onPullDownRefresh</code>不能同时使用</h4><p>参考：<a href="https://blog.csdn.net/zhenqiangzhang/article/details/54347602" target="_blank" rel="noopener">微信小程序—下拉刷新上拉加载</a></p>
 <h1 id="6-录音"><a href="#6-录音" class="headerlink" title="6. 录音"></a>6. 录音</h1><h4 id="6-1-格式问题导致录音无法播放。"><a href="#6-1-格式问题导致录音无法播放。" class="headerlink" title="6.1. 格式问题导致录音无法播放。"></a>6.1. 格式问题导致录音无法播放。</h4><p>小程序推荐使用的录音管理上下文<code>wx.getRecorderManager()</code>支持的录音格式有两种:<code>aac/mp3</code>。如果不指定格式，在安卓端录音的文件格式是 m4a 的，会导致无法播放。</p>
 <p>所以需要在录音时手动设置格式为<code>mp3</code>格式，<code>aac</code>会有播放不全的 BUG</p>
-<pre><code>this.recordManager.start({
-    format: &#39;mp3&#39; //
-})
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">this</span><span class="selector-class">.recordManager</span><span class="selector-class">.start</span>(&#123;</span><br><span class="line">    <span class="attribute">format</span>: <span class="string">'mp3'</span> //</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
     </section>
     <!-- Tags START -->
     
@@ -325,7 +243,7 @@ wx.getSystemInfo({
 <script>
   (function () {
     var url = 'rychou.github.io/2018/07/19/vue和小程序踩坑指南/';
-    var banner = ''
+    var banner = 'https://i.loli.net/2018/12/19/5c19b9872ba99.jpg'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -442,6 +360,10 @@ wx.getSystemInfo({
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

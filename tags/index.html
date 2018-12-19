@@ -16,7 +16,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -118,51 +118,53 @@
 <main class="app-body">
   <div id="tag-cloud">
     
-      <a class="tag1" data-name="tag-C++ C">C++ C</a>
+      <a class="tag0" data-name="tag-C++ C">C++ C</a>
     
-      <a class="tag2" data-name="tag-npm">npm</a>
+      <a class="tag2" data-name="tag-Javascript">Javascript</a>
     
-      <a class="tag1" data-name="tag-Javascript">Javascript</a>
+      <a class="tag1" data-name="tag-npm">npm</a>
     
-      <a class="tag1" data-name="tag-hexo">hexo</a>
-    
-      <a class="tag1" data-name="tag-踩坑">踩坑</a>
+      <a class="tag0" data-name="tag-踩坑">踩坑</a>
     
       <a class="tag1" data-name="tag-回调函数">回调函数</a>
     
-      <a class="tag3" data-name="tag-vue">vue</a>
+      <a class="tag3" data-name="tag-闭包">闭包</a>
     
-      <a class="tag2" data-name="tag-小程序">小程序</a>
-    
-      <a class="tag2" data-name="tag-Vue">Vue</a>
-    
-      <a class="tag3" data-name="tag-录音">录音</a>
-    
-      <a class="tag1" data-name="tag-mpvue">mpvue</a>
-    
-      <a class="tag0" data-name="tag-前端自动化">前端自动化</a>
-    
-      <a class="tag2" data-name="tag-Gitalk">Gitalk</a>
-    
-      <a class="tag2" data-name="tag-目录">目录</a>
-    
-      <a class="tag1" data-name="tag-vant">vant</a>
-    
-      <a class="tag0" data-name="tag-闭包">闭包</a>
-    
-      <a class="tag1" data-name="tag-Linux">Linux</a>
+      <a class="tag2" data-name="tag-Linux">Linux</a>
     
       <a class="tag2" data-name="tag-闪讯">闪讯</a>
     
-      <a class="tag2" data-name="tag-Promise">Promise</a>
+      <a class="tag1" data-name="tag-mpvue">mpvue</a>
     
-      <a class="tag2" data-name="tag-云开发">云开发</a>
+      <a class="tag2" data-name="tag-vant">vant</a>
     
-      <a class="tag1" data-name="tag-文件下载">文件下载</a>
+      <a class="tag0" data-name="tag-hexo">hexo</a>
+    
+      <a class="tag0" data-name="tag-小程序">小程序</a>
+    
+      <a class="tag1" data-name="tag-Vue">Vue</a>
+    
+      <a class="tag3" data-name="tag-vue">vue</a>
+    
+      <a class="tag1" data-name="tag-目录">目录</a>
+    
+      <a class="tag3" data-name="tag-云开发">云开发</a>
+    
+      <a class="tag1" data-name="tag-Promise">Promise</a>
+    
+      <a class="tag2" data-name="tag-录音">录音</a>
+    
+      <a class="tag2" data-name="tag-Gitalk">Gitalk</a>
+    
+      <a class="tag2" data-name="tag-前端自动化">前端自动化</a>
+    
+      <a class="tag2" data-name="tag-文件下载">文件下载</a>
     
       <a class="tag1" data-name="tag-English">English</a>
     
-      <a class="tag2" data-name="tag-面试">面试</a>
+      <a class="tag1" data-name="tag-面试">面试</a>
+    
+      <a class="tag0" data-name="tag-珠海行">珠海行</a>
     
   </div>
   
@@ -178,28 +180,11 @@
     </div>
     
     <div class="tag-list">
-      <h3 class="tag-name" id="tag-npm">npm</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2017/12/06/2017-12-6/">发布你的第一个npm包！</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
       <h3 class="tag-name" id="tag-Javascript">Javascript</h3>
       
         <ul class="tag-preview">
           <li>
             <a href="/2017/11/06/Javascript/">Js中splice()于slice()的区别</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/17/用shelljs实现前端部署自动化/">用shelljs实现前端部署自动化</a>
           </li>
         </ul>
         
@@ -217,12 +202,6 @@
         
         <ul class="tag-preview">
           <li>
-            <a href="/2018/09/02/Js学习笔记之闭包/">Js学习笔记：闭包</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
             <a href="/2018/09/27/ES6数组去重和重复元素统计/">ES6数组去重和重复元素统计</a>
           </li>
         </ul>
@@ -233,20 +212,26 @@
           </li>
         </ul>
         
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-hexo">hexo</h3>
-      
         <ul class="tag-preview">
           <li>
-            <a href="/2017/10/18/hexo建站的坑/">hexo建站的坑</a>
+            <a href="/2018/09/02/Js学习笔记之闭包/">Js学习笔记：闭包</a>
           </li>
         </ul>
         
         <ul class="tag-preview">
           <li>
-            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
+            <a href="/2018/08/17/用shelljs实现前端部署自动化/">用shelljs实现前端部署自动化</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-npm">npm</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/12/06/2017-12-6/">发布你的第一个npm包！</a>
           </li>
         </ul>
         
@@ -257,7 +242,7 @@
       
         <ul class="tag-preview">
           <li>
-            <a href="/2018/07/17/在富文本编辑器之外使用quill富文本样式/">在富文本编辑器之外使用quill富文本样式</a>
+            <a href="/2018/09/18/Js学习笔记之回调函数/">Js学习笔记：回调函数</a>
           </li>
         </ul>
         
@@ -269,13 +254,13 @@
         
         <ul class="tag-preview">
           <li>
-            <a href="/2018/07/17/小程序Tabs懒加载/">小程序Tabs懒加载</a>
+            <a href="/2018/07/17/在富文本编辑器之外使用quill富文本样式/">在富文本编辑器之外使用quill富文本样式</a>
           </li>
         </ul>
         
         <ul class="tag-preview">
           <li>
-            <a href="/2018/09/18/Js学习笔记之回调函数/">Js学习笔记：回调函数</a>
+            <a href="/2018/07/17/小程序Tabs懒加载/">小程序Tabs懒加载</a>
           </li>
         </ul>
         
@@ -287,165 +272,6 @@
         <ul class="tag-preview">
           <li>
             <a href="/2018/09/18/Js学习笔记之回调函数/">Js学习笔记：回调函数</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-vue">vue</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/17/在富文本编辑器之外使用quill富文本样式/">在富文本编辑器之外使用quill富文本样式</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-小程序">小程序</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/19/vue和小程序踩坑指南/">vue和小程序踩坑指南</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/17/小程序Tabs懒加载/">小程序Tabs懒加载</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/30/小程序分享功能报错问题解决方案/">小程序分享功能报错问题解决方案</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/30/小程序输入框闪烁BUG解决方案/">小程序输入框闪烁BUG解决方案</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/10/06/用Promise实现小程序接口链式调用/">用Promise实现小程序接口链式调用</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/10/10/mpvue中小程序云开发总结/">mpvue中小程序云开发总结</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/12/09/漫谈小程序/">漫谈微信小程序</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-Vue">Vue</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/19/vue和小程序踩坑指南/">vue和小程序踩坑指南</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-录音">录音</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-mpvue">mpvue</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">Mpvue中使用Vant Weapp组件库</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/10/06/用Promise实现小程序接口链式调用/">用Promise实现小程序接口链式调用</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/10/10/mpvue中小程序云开发总结/">mpvue中小程序云开发总结</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-前端自动化">前端自动化</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/17/用shelljs实现前端部署自动化/">用shelljs实现前端部署自动化</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-Gitalk">Gitalk</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/18/用gitalk给你的博客添加评论服务/">用gitalk给你的博客添加评论服务</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-目录">目录</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/21/为你的博客添加目录索引/">为你的博客添加目录索引</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-vant">vant</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">Mpvue中使用Vant Weapp组件库</a>
           </li>
         </ul>
         
@@ -485,11 +311,143 @@
     </div>
     
     <div class="tag-list">
-      <h3 class="tag-name" id="tag-Promise">Promise</h3>
+      <h3 class="tag-name" id="tag-mpvue">mpvue</h3>
       
         <ul class="tag-preview">
           <li>
+            <a href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">Mpvue中使用Vant Weapp组件库</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/10/10/mpvue中小程序云开发总结/">mpvue中小程序云开发总结</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
             <a href="/2018/10/06/用Promise实现小程序接口链式调用/">用Promise实现小程序接口链式调用</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-vant">vant</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/31/Mpvue中使用Vant Weapp组件库/">Mpvue中使用Vant Weapp组件库</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-hexo">hexo</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/10/18/hexo建站的坑/">hexo建站的坑</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2017/10/19/给页面添加一个密码验证/">给页面添加一个密码验证</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-小程序">小程序</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/19/vue和小程序踩坑指南/">vue和小程序踩坑指南</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/10/10/mpvue中小程序云开发总结/">mpvue中小程序云开发总结</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/17/小程序Tabs懒加载/">小程序Tabs懒加载</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/12/09/漫谈小程序/">漫谈微信小程序</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/30/小程序分享功能报错问题解决方案/">小程序分享功能报错问题解决方案</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/30/小程序输入框闪烁BUG解决方案/">小程序输入框闪烁BUG解决方案</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/10/06/用Promise实现小程序接口链式调用/">用Promise实现小程序接口链式调用</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Vue">Vue</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/19/vue和小程序踩坑指南/">vue和小程序踩坑指南</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-vue">vue</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/17/在富文本编辑器之外使用quill富文本样式/">在富文本编辑器之外使用quill富文本样式</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-目录">目录</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/21/为你的博客添加目录索引/">为你的博客添加目录索引</a>
           </li>
         </ul>
         
@@ -501,6 +459,50 @@
         <ul class="tag-preview">
           <li>
             <a href="/2018/10/10/mpvue中小程序云开发总结/">mpvue中小程序云开发总结</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Promise">Promise</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/10/06/用Promise实现小程序接口链式调用/">用Promise实现小程序接口链式调用</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-录音">录音</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/07/23/小程序实现长按录音,上划取消发送/">小程序实现长按录音，上划取消发送</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Gitalk">Gitalk</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/18/用gitalk给你的博客添加评论服务/">用gitalk给你的博客添加评论服务</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-前端自动化">前端自动化</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/08/17/用shelljs实现前端部署自动化/">用shelljs实现前端部署自动化</a>
           </li>
         </ul>
         
@@ -534,6 +536,17 @@
         <ul class="tag-preview">
           <li>
             <a href="/2018/11/25/面试题收集/">面试题收集</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-珠海行">珠海行</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/12/19/珠海行/">珠海行</a>
           </li>
         </ul>
         
@@ -603,6 +616,10 @@
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

@@ -16,7 +16,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -153,7 +153,7 @@
 <p>mpvue 使用方式</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">click</span>=<span class="string">"onClick"</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-3-vue-中组件引入"><a href="#1-3-vue-中组件引入" class="headerlink" title="1.3 vue 中组件引入"></a>1.3 vue 中组件引入</h3><p><code>vant</code>中像<code>notify</code>这种操作反馈类的组件都有两个引入，一是组件的引入，这个在<code>main.json</code>中引入；另一个是方法的引入，需要在<code>vue</code>文件中<code>import</code>引入，值得注意的是，这里的引入不能使用绝对路径，可以用类似于这样的相对路径。</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Notify <span class="keyword">from</span> <span class="string">'@/../static/notify/notify'</span> <span class="comment">//@是mpvue的一个别名，指向src目录</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Notify <span class="keyword">from</span> <span class="string">'@/../static/notify/notify'</span> <span class="comment">//@是mpvue的一个别名，指向src目录</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-4-获取-event"><a href="#1-4-获取-event" class="headerlink" title="1.4 获取 event"></a>1.4 获取 event</h3><p>值得注意的是，<code>mpvue</code>中获取<code>event</code>值与原生小程序有所不同。举例：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">onChange</span><span class="params">(event)</span></span>&#123; <span class="comment">// 获取表单组件filed的值</span></span><br><span class="line">  console.log(event<span class="selector-class">.mp</span><span class="selector-class">.detail</span>) <span class="comment">// 注意加入mp</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="2-BUG-及报错处理方法"><a href="#2-BUG-及报错处理方法" class="headerlink" title="2. BUG 及报错处理方法"></a>2. BUG 及报错处理方法</h2><h3 id="2-1-监听名"><a href="#2-1-监听名" class="headerlink" title="2.1 监听名"></a>2.1 监听名</h3><p>mpvue 里面无法使用<code>@click-icon</code>这样的监听名,因此如果 API 文档里面有出现这样的监听名，那么需要手动修改源代码。</p>
@@ -201,10 +201,10 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/08/30/小程序分享功能报错问题解决方案/">
+      <a class="nav-left" href="/2018/08/30/小程序输入框闪烁BUG解决方案/">
         <span class="nav-arrow">← </span>
         
-          小程序分享功能报错问题解决方案
+          小程序输入框闪烁BUG解决方案
         
       </a>
     
@@ -266,7 +266,7 @@
 <script>
   (function () {
     var url = 'rychou.github.io/2018/08/31/Mpvue中使用Vant Weapp组件库/';
-    var banner = ''
+    var banner = 'https://i.loli.net/2018/12/19/5c19b9872ba99.jpg'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -383,6 +383,10 @@
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

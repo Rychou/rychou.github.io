@@ -16,7 +16,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
@@ -129,7 +129,12 @@
       <h1 id="一、短语"><a href="#一、短语" class="headerlink" title="一、短语"></a>一、短语</h1><p><code>call it a day</code>: 一天快要结束了。可以在下班的时候说。</p>
 <p><code>call it a night</code>: 一晚快要结束了。如果你在某个地方浪到很晚可以这样说。</p>
 <p><code>hunkey-dory</code>: hunky 意思是肌肉发达的，但是这个短语的意思与<code>fine</code>类似<br>。</p>
-<h1 id="二、写作"><a href="#二、写作" class="headerlink" title="二、写作"></a>二、写作</h1><p><code>There is an old Chinese proverb(谚语) which states(声明，三单) &#39;A journey of a thousand miles starts with a single step&#39;.</code></p>
+<h1 id="二、写作"><a href="#二、写作" class="headerlink" title="二、写作"></a>二、写作</h1><p><code>1. There is an old Chinese proverb(谚语) which states(声明，三单) &#39;A journey of a thousand miles starts with a single step&#39;.</code></p>
+<p><code>2. It goes without saying that ...</code></p>
+<p><code>3. Amount various kinds of ...</code></p>
+<p><code>4. With the advance of science and technology</code></p>
+<p><code>5. In this age of information and communication, ... plays an extremely important role.</code></p>
+<p><code>6. Recently it has become a common phenomenon</code></p>
 
     </section>
     <!-- Tags START -->
@@ -214,7 +219,7 @@
 <script>
   (function () {
     var url = 'rychou.github.io/2018/11/23/英语学习专题/';
-    var banner = ''
+    var banner = 'https://i.loli.net/2018/12/19/5c19b9872ba99.jpg'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -331,6 +336,10 @@
       codeTag.innerHTML = codeHtml;
       $(this).attr('class', '').empty().html(codeTag);
       figure.attr('data-lang', lang.toUpperCase());
+      hljs.configure({
+        // languages: ['js', 'css', 'less', 'scss', 'sass', 'html', 'JSON'],
+        // useBR: true,
+      })
       hljs.highlightBlock(block);
     });
   })

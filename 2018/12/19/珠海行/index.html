@@ -10,7 +10,7 @@
   
   <title>
     
-    用shelljs实现前端部署自动化 |
+    珠海行 |
     Rychou&#39;blog
     
   </title>
@@ -113,10 +113,10 @@
 
     <div id="article-banner">
   <h2>
-    用shelljs实现前端部署自动化
+    珠海行
   </h2>
   <p class="post-date">
-    2018-08-17
+    2018-12-19
   </p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -126,24 +126,14 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content">
-      <h1 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h1><p>在前端开发过程中，你肯定经常使用到以下等命令：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">run</span><span class="bash"> build</span></span><br><span class="line"><span class="bash">git add .</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">'commit'</span></span></span><br><span class="line"><span class="bash">git push</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>本人在用<code>vue-cli</code>写我的个人博客时，将其部署到<code>coding pages</code>上。不用<code>github pages</code>的原因纯粹是因为慢。。。每一次部署，都要将上面的命令敲一遍，实在令我很痛苦。如果能用一条命令执行以上所有任务，那就爽多了。</p>
-<p>话不多说，说干就干。</p>
-<h1 id="二、Shelljs"><a href="#二、Shelljs" class="headerlink" title="二、Shelljs"></a>二、<a href="https://github.com/shelljs/shelljs" target="_blank" rel="noopener">Shelljs</a></h1><p>这个库能够让我们在<code>js</code>文件中执行 shell 命令，具体可以看<a href="https://github.com/shelljs/shelljs" target="_blank" rel="noopener">文档</a>。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="string">[-g]</span> shelljs</span><br></pre></td></tr></table></figure>
-<p>有两种使用方式，一种是全局模式(对应全局安装),一种是局部模式。看下面的使用案例就知道两者区别。</p>
-<h1 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h1><p>在根目录下新建文件<code>shell.js</code>，内容如下：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//局部模式</span><br><span class="line">var <span class="keyword">shell</span><span class="bash"> = require(<span class="string">'shelljs'</span>);</span></span><br><span class="line"><span class="bash">//全局模式下，就不需要用shell开头了。</span></span><br><span class="line"><span class="bash">//require(<span class="string">'shelljs/global'</span>);</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="keyword">if</span> (shell.exec(<span class="string">'npm run build'</span>).code !== 0) &#123;//执行npm run build 命令</span></span><br><span class="line"><span class="bash">  shell.echo(<span class="string">'Error: Git commit failed'</span>);</span></span><br><span class="line"><span class="bash">  shell.exit(1);</span></span><br><span class="line"><span class="bash">&#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">//由于我的用另外一个仓库存放dist目录，所以这里要将文件增量复制到目标目录。并切换到对应目录。</span></span><br><span class="line"><span class="bash">shell.cp (<span class="string">'-r'</span>, <span class="string">'./dist/*'</span>, <span class="string">'../../Rychou'</span>);</span></span><br><span class="line"><span class="bash">shell.cd(<span class="string">'../../Rychou'</span>);</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">shell.exec(<span class="string">'git add .'</span>);</span></span><br><span class="line"><span class="bash">shell.exec(<span class="string">"git commit -m 'autocommit'"</span>)</span></span><br><span class="line"><span class="bash">shell.exec(<span class="string">'git push'</span>)</span></span><br></pre></td></tr></table></figure>
-<p>这时在根目录下执行<code>node shell.js</code>就可以了</p>
-<p>这里只是最简单的使用案例。</p>
-<h1 id="四、再让它更方便些"><a href="#四、再让它更方便些" class="headerlink" title="四、再让它更方便些"></a>四、再让它更方便些</h1><p>在<code>package.json</code>中加入：</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"script"</span>:&#123;</span><br><span class="line">+	<span class="string">"push"</span>:<span class="string">"node ./shell.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在根目录下执行<code>npm run push</code>就搞定了。</p>
-<blockquote>
-<p>参考链接：<a href="https://github.com/shelljs/shelljs" target="_blank" rel="noopener">Shelljs</a></p>
-</blockquote>
+      <h1 id="一、第一次坐飞机"><a href="#一、第一次坐飞机" class="headerlink" title="一、第一次坐飞机"></a>一、第一次坐飞机</h1><p>这是我人生第一次坐飞机呀，内心有很多期待。这次坐飞机发生了一件非常沙雕的事。</p>
+<p>机场不是在杭州而是在上海浦东机场，机票是买的金鹏航空早上<code>6:30</code>的特价机票，所以需要提前一天晚上出发去上海浦东机场。我是27号晚上从杭州去上海，需要在机场过夜。到上海已经9点了，去机场的二号线末班是<code>10:30</code>的，所以到了人民广场也没时间去吃炸鸡了。直接搭乘地铁去机场了。</p>
+<p>关键来了，因为当时没吃晚饭，肚子很饿，穷学生又怕机场的吃的很贵，所以打算在机场前一站下车去找吃的！！！结果一下车发现，这。。。。荒郊野岭哪里有吃的，然后就在地图上找周围的吃的便利店等等，结果在那附近走了近一个小时，放弃了。肚子饿的不行，只能去机场了，又走了一个小时到达机场，腿都要断了。那天我走了2w多步。到了机场发现，机场的全家并不贵，哭死了呜呜呜。</p>
+<p>然后就是去航站楼了，结果航站楼也走错了，我的是<code>T2</code>，我走到<code>T1</code>去了。</p>
+<p>最后拿了登机牌在地上睡了一会，差点睡过头了（真的是差一点），那天是真是诸事不顺。</p>
+<p>不过还好顺利登机啦！</p>
+<p><img src="https://i.loli.net/2018/12/19/5c19bffb35857.jpg" alt="云层之上"></p>
+<p><img src="https://i.loli.net/2018/12/19/5c19bffb3207b.jpg" alt="飞机上看到的风力发电机"></p>
 
     </section>
     <!-- Tags START -->
@@ -151,12 +141,8 @@
     <div class="tags">
       <span>Tags:</span>
       
-  <a href="/tags#Javascript">
-    <span class="tag-code">Javascript</span>
-  </a>
-
-  <a href="/tags#前端自动化">
-    <span class="tag-code">前端自动化</span>
+  <a href="/tags#珠海行">
+    <span class="tag-code">珠海行</span>
   </a>
 
     </div>
@@ -167,20 +153,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/08/15/Js学习笔记之apply与call/">
+      <a class="nav-left" href="/2018/12/09/漫谈小程序/">
         <span class="nav-arrow">← </span>
         
-          Js学习笔记：apply与call
+          漫谈微信小程序
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/08/18/用gitalk给你的博客添加评论服务/">
-        
-          用gitalk给你的博客添加评论服务
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -221,7 +200,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、场景"><span class="toc-nav-text">一、场景</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、Shelljs"><span class="toc-nav-text">二、Shelljs</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装"><span class="toc-nav-text">安装</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、使用"><span class="toc-nav-text">三、使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#四、再让它更方便些"><span class="toc-nav-text">四、再让它更方便些</span></a></li>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、第一次坐飞机"><span class="toc-nav-text">一、第一次坐飞机</span></a></li></ol>
     
   </div>
 </aside>
@@ -231,7 +210,7 @@
 
 <script>
   (function () {
-    var url = 'rychou.github.io/2018/08/17/用shelljs实现前端部署自动化/';
+    var url = 'rychou.github.io/2018/12/19/珠海行/';
     var banner = 'https://i.loli.net/2018/12/19/5c19b9872ba99.jpg'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
