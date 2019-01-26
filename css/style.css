@@ -508,8 +508,8 @@ h2.article-head {
 .article-summary pre,
 .markdown-content code,
 .article-summary code {
-  font-family: 'Roboto Mono', Monaco, courier, monospace;
-  font-size: 13px;
+  font-family: Consolas, "Courier New", Courier, FreeMono, monospace;
+  font-size: 16px;
 }
 @media screen and (max-width: 480px) {
   .markdown-content pre,
@@ -527,17 +527,55 @@ h2.article-head {
   margin: 2px 0;
 }
 .markdown-content p,
-.article-summary p {
+.article-summary p,
+.markdown-content li,
+.article-summary li,
+.markdown-content h1,
+.article-summary h1,
+.markdown-content h2,
+.article-summary h2,
+.markdown-content h3,
+.article-summary h3,
+.markdown-content h4,
+.article-summary h4,
+.markdown-content h5,
+.article-summary h5,
+.markdown-content h6,
+.article-summary h6,
+.markdown-content blockquote,
+.article-summary blockquote {
   line-height: 1.6em;
 }
-.markdown-content p code,
-.article-summary p code {
-  background-color: #f8f8f8;
-  color: #e96900;
+.markdown-content p >code,
+.article-summary p >code,
+.markdown-content li >code,
+.article-summary li >code,
+.markdown-content h1 >code,
+.article-summary h1 >code,
+.markdown-content h2 >code,
+.article-summary h2 >code,
+.markdown-content h3 >code,
+.article-summary h3 >code,
+.markdown-content h4 >code,
+.article-summary h4 >code,
+.markdown-content h5 >code,
+.article-summary h5 >code,
+.markdown-content h6 >code,
+.article-summary h6 >code,
+.markdown-content blockquote >code,
+.article-summary blockquote >code {
+  background-color: #f9f2f4;
+  color: #c7254e;
   padding: 3px 5px;
   margin: 0 2px;
   border-radius: 2px;
   white-space: nowrap;
+}
+.markdown-content h1,
+.article-summary h1,
+.markdown-content h2,
+.article-summary h2 {
+  border-bottom: 1px solid #e5e5e5;
 }
 .markdown-content h1,
 .article-summary h1 {
@@ -552,7 +590,6 @@ h2.article-head {
   margin: 1em 0;
   font-size: 1.3em;
   padding-bottom: 0.3em;
-  border-bottom: 1px solid #e5e5e5;
 }
 .markdown-content h4,
 .article-summary h4 {
@@ -657,6 +694,11 @@ h2.article-head {
   border: none;
   border-bottom: 1px dashed #e5e5e5;
   margin: 30px 0;
+}
+.markdown-content >p,
+.article-summary >p {
+  text-indent: 33px;
+  margin-bottom: 12px;
 }
 #tag-cloud {
   margin: 30px 0;
